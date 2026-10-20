@@ -1,18 +1,16 @@
-import { createRouter as createTanStackRouter, rewriteBasepath } from '@tanstack/react-router'
+import { createRouter as createTanStackRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 import { NotFound } from './components/not-found'
 import { ErrorBoundary } from './components/error-boundary'
 
 export function getRouter() {
-  const basepath = import.meta.env.BASE_URL.replace(/\/$/, '')
+  const basepath = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
   const router = createTanStackRouter({
     routeTree,
-    ...(basepath ? { rewrite: rewriteBasepath({ basepath }) } : {}),
+    ...(basepath !== '/' ? { basepath } : {}),
     scrollRestoration: true,
     defaultPreload: 'intent',
     defaultPreloadStaleTime: 0,
-    // Router-wide fallbacks. Individual routes can still override with their
-    // own notFoundComponent / errorComponent.
     defaultNotFoundComponent: NotFound,
     defaultErrorComponent: ErrorBoundary,
   })
