@@ -7,9 +7,9 @@ const projects = [
   {
     number: '01', category: 'brand', type: 'SALES · GROWTH · CONVERSION',
     title: 'Prajjwal Portfolio — Sales & Growth',
-    description: 'A deployed sales-and-growth portfolio focused on campaign thinking, client communication, conversion journeys, and business-facing project storytelling.',
+    description: 'A sales-and-growth portfolio focused on campaign thinking, client communication, conversion journeys, and business-facing project storytelling.',
     tags: ['Sales', 'Growth strategy', 'Conversion', 'Web'],
-    status: 'LIVE · MACALY', visual: 'sales-growth',
+    status: 'LIVE · EXTERNAL DEMO', visual: 'sales-growth',
     previewTag: 'SALES / GROWTH', previewTitle: 'Turn interest into action.', previewSymbol: '↗',
     problem: 'Business-facing work needs to communicate its value quickly and make the next step obvious.',
     approach: 'This portfolio direction organizes sales, growth, and conversion storytelling into a focused website.',
@@ -17,7 +17,7 @@ const projects = [
     next: 'Keep the public site current with verified outcomes and useful project links.',
     demoUrl: 'https://umvrwkq122sm1oz3eqlgisw8.macaly.app',
     repoUrl: '',
-    statusNote: 'This Macaly app is already deployed and publicly reachable. It is a separate portfolio concept from this all-projects hub.',
+    statusNote: 'A separate sales-and-growth portfolio concept focused on campaign thinking, client communication, conversion journeys, and business-facing storytelling.',
   },
   {
     number: '02', category: 'ai', type: 'PYTHON · APPLIED AI · CUSTOMER SUPPORT',
@@ -39,7 +39,7 @@ const projects = [
     title: 'Customer Feedback Dashboard',
     description: 'A customer-feedback analytics interface with sample responses, headline metrics, sentiment and category filters, trend visuals, and a feedback-detail panel.',
     tags: ['Analytics', 'Charts', 'Sentiment', 'Feedback ops'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'feedback',
+    status: 'CONCEPT / CASE STUDY', visual: 'feedback',
     previewTag: 'FEEDBACK ANALYTICS', previewTitle: 'Listen. Learn. Improve.', previewSymbol: '▦',
     problem: 'Feedback is harder to act on when scores, trends, filters, and individual comments are disconnected.',
     approach: 'The dashboard groups sample metrics, feedback trends, filters, and detail views in one interface.',
@@ -47,14 +47,14 @@ const projects = [
     next: 'Finish the functional review and label all sample records and figures before presenting it as a production analytics tool.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This project is included in the public portfolio catalog, but the app itself is not deployed publicly on the current Macaly plan. The dashboard uses illustrative sample records and its add-feedback control needs review.',
+    statusNote: 'The dashboard uses illustrative sample records, and its add-feedback control needs review before the interface can be presented as a production analytics tool.',
   },
   {
     number: '04', category: 'product', type: 'SOCIAL IMPACT · PRODUCT DESIGN',
     title: 'FoodRescue — Motion Prototype',
     description: 'A food-rescue product prototype exploring restaurant surplus listings, NGO partner pickups, route coordination, sponsorship, and impact summaries.',
     tags: ['Food rescue', 'Community', 'Product design', 'Impact'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'food',
+    status: 'CONCEPT / CASE STUDY', visual: 'food',
     previewTag: 'COMMUNITY NETWORK', previewTitle: 'Good food, better routes.', previewSymbol: '♻',
     problem: 'Surplus food and community needs are difficult to coordinate when people, pickup windows, and routes are disconnected.',
     approach: 'The prototype explores separate journeys for restaurants, NGO partners, and sponsors, with an animated sample impact dashboard.',
@@ -62,14 +62,14 @@ const projects = [
     next: 'Run a usability pass on the primary journey and label simulated metrics as demo data.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This motion-led product concept is represented here with its design brief and status. The current Macaly plan does not allow another public deployment, so no inaccessible workspace link is shown.',
+    statusNote: 'This motion-led product concept explores separate journeys for restaurants, NGO partners, and sponsors, with illustrative sample impact metrics.',
   },
   {
     number: '05', category: 'data', type: 'DATA · DECISION INTELLIGENCE',
     title: 'Real-Time Decision Intelligence Demo',
     description: 'A decision dashboard concept combining KPI cards, anomaly alerts, forecast charts, and scenario controls for exploring operational changes.',
     tags: ['KPIs', 'Forecasting', 'Anomaly signals', 'Scenarios'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'decision',
+    status: 'CONCEPT / CASE STUDY', visual: 'decision',
     previewTag: 'DECISION INTELLIGENCE', previewTitle: 'See what changes next.', previewSymbol: '◉',
     problem: 'Metrics are less useful if people cannot see unusual movement or compare potential outcomes.',
     approach: 'The demo combines sample metric summaries, exception cues, forecast visuals, and what-if controls.',
@@ -77,14 +77,14 @@ const projects = [
     next: 'Document scenario assumptions and validate measures before using the demo for real decisions.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This is a browser interface concept, not a connected real-time data service. It is visible as a case study here; the app is not publicly deployed.',
+    statusNote: 'This is a dashboard concept using sample metrics, anomaly cues, forecasts, and what-if scenarios; it is not connected to a live data source.',
   },
   {
     number: '06', category: 'ai', type: 'AI · CONVERSATIONAL ANALYTICS',
     title: 'AI Conversational BI Demo',
     description: 'A conversational business-intelligence interface with suggested questions, query-led exploration, charts, and concise insight cards driven by sample data.',
     tags: ['Conversational BI', 'Charts', 'Data insights', 'UI/UX'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'bi',
+    status: 'CONCEPT / CASE STUDY', visual: 'bi',
     previewTag: 'CONVERSATIONAL BI', previewTitle: 'Ask your data.', previewSymbol: '◌',
     problem: 'People often know the business question they want answered but not which dashboard or filter to start with.',
     approach: 'The prototype pairs a question-led interface with static sample charts and insight cards to show a conversational analytics experience.',
@@ -92,14 +92,14 @@ const projects = [
     next: 'Connect a documented dataset and explain the supported questions and model limitations.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'The current prototype uses sample values and local query rules; it is not connected to company data or a live LLM. It remains listed here but is not publicly deployed.',
+    statusNote: 'The prototype uses sample values and local query rules; it is not connected to company data or a live language model.',
   },
   {
     number: '07', category: 'brand', type: 'GROWTH STUDIO · INTERNAL WORKFLOWS',
     title: 'Agyatvyakti Growth Studio',
     description: 'A full growth-studio command centre for managing prospects, outreach, proposals, onboarding, clients, projects, tasks, deliverables, and sales progress.',
     tags: ['Lead management', 'Client operations', 'CRM', 'Workflow design'],
-    status: 'INTERNAL APP · REVIEW BEFORE PUBLIC RELEASE', visual: 'growth',
+    status: 'INTERNAL TOOL · ACCESS RESTRICTED', visual: 'growth',
     previewTag: 'GROWTH STUDIO', previewTitle: 'A clearer operating rhythm.', previewSymbol: '↗',
     problem: 'Studio operations become fragmented when outreach, client onboarding, proposals, and delivery live in separate tools.',
     approach: 'The workspace brings leads, business contacts, outreach, sales records, projects, tasks, and deliverables into one operational command centre.',
@@ -114,37 +114,37 @@ const projects = [
     title: 'ClearLedger Personal',
     description: 'A personal finance workspace for tracking income, expenses, debts, repayments, and recent transactions, with owner-token access controls.',
     tags: ['Personal finance', 'Transactions', 'Debt tracking', 'Privacy'],
-    status: 'PRIVATE APP · SECURITY REVIEW', visual: 'ledger',
+    status: 'PRIVATE TOOL · ACCESS RESTRICTED', visual: 'ledger',
     previewTag: 'CLEARLEDGER / PERSONAL', previewTitle: 'Your records, protected.', previewSymbol: '◎',
     problem: 'Personal records require a focused way to track balances and activity without exposing financial details to other users.',
     approach: 'The app uses an owner-authenticated workspace and separates debt tracking from income and expense activity.',
-    testPlan: 'Review owner-token issuance, unauthorized query and mutation behavior, session handling, and database authorization before public deployment.',
-    next: 'Complete a security review and test with synthetic data only before sharing a public demo link.',
+    testPlan: 'Review owner-token issuance, unauthorized query and mutation behavior, session handling, and database authorization.',
+    next: 'Use synthetic data for testing and keep personal financial records private.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This finance app is included in the catalog but remains private until its owner access controls are security-reviewed. No finance records or workspace preview are exposed by this card.',
+    statusNote: 'Access to this personal-finance tool is restricted; this portfolio shows only a high-level project description.',
   },
   {
     number: '09', category: 'brand', type: 'AI · PORTFOLIO EXPLORATION',
     title: 'Dark Knight AI Portfolio',
     description: 'An alternate portfolio direction exploring a cinematic dark identity, AI-focused storytelling, and project-first visual presentation.',
     tags: ['AI', 'Portfolio design', 'Visual identity', 'Web'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'dark-portfolio',
+    status: 'CONCEPT / CASE STUDY', visual: 'dark-portfolio',
     previewTag: 'DARK KNIGHT / AI', previewTitle: 'Technology after dark.', previewSymbol: '✳',
     problem: 'A portfolio needs a memorable identity while keeping the work, skills, and navigation easy to understand.',
     approach: 'This alternate concept explores a darker visual language for presenting technical and AI-oriented work.',
     testPlan: 'Check contrast, keyboard focus, responsive navigation, and whether the theme makes projects easier to evaluate.',
-    next: 'Reuse the strongest accessible ideas in the main portfolio and publish the full concept when deployment is available.',
+    next: 'Reuse the strongest accessible ideas in the main portfolio while keeping this alternative concept documented separately.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This is an alternate portfolio concept from Macaly. Its full project card and case study remain visible here; the standalone draft is not publicly deployed.',
+    statusNote: 'An alternate portfolio direction exploring a cinematic dark identity, AI-focused storytelling, and project-first visual presentation.',
   },
   {
     number: '10', category: 'brand', type: 'INTERACTIVE DESIGN · 3D',
     title: 'Prajjwal Portfolio — AI 3D Experience',
     description: 'An alternate three-dimensional portfolio concept using spatial visuals, motion, and interaction to tell a technical project story.',
     tags: ['3D visuals', 'Motion', 'Portfolio UX', 'Interaction'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'three-d',
+    status: 'CONCEPT / CASE STUDY', visual: 'three-d',
     previewTag: '3D EXPERIENCE', previewTitle: 'Ideas in motion.', previewSymbol: '◈',
     problem: 'Interactive visuals can make a portfolio memorable, but must not make navigation or project detail harder to use.',
     approach: 'The experience experiments with a motion-led spatial presentation and project-focused visual hierarchy.',
@@ -152,44 +152,44 @@ const projects = [
     next: 'Keep motion purposeful and retain accessible, readable project details on smaller screens.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This is the dedicated 3D portfolio exploration in Macaly, separate from the main hub. It remains listed but is not publicly deployed.',
+    statusNote: 'This alternate 3D portfolio explores spatial visuals, motion, and interactive project storytelling.',
   },
   {
     number: '11', category: 'brand', type: 'BRAND · STUDIO WEBSITE',
     title: 'Agyat Vyakti Studio',
     description: 'A studio website concept for communicating a brand identity, services, and a consistent digital presence.',
     tags: ['Studio', 'Brand website', 'Web design', 'Messaging'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'studio',
+    status: 'CONCEPT / CASE STUDY', visual: 'studio',
     previewTag: 'STUDIO WEBSITE', previewTitle: 'Make the work visible.', previewSymbol: '✦',
     problem: 'A studio presence needs a cohesive identity, a clear service story, and an easy way for visitors to make contact.',
     approach: 'The site concept explores a branded presentation that organizes service messaging and the overall studio story.',
     testPlan: 'Review responsive navigation, content hierarchy, accessibility, and all contact links.',
-    next: 'Align the final copy with the intended audience and publish the site when deployment capacity is available.',
+    next: 'Align the final copy with the intended audience and ensure all contact links work.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This studio website remains a separate Macaly project and is included in this list; the standalone app is not publicly deployed.',
+    statusNote: 'A studio website concept for presenting a cohesive brand identity, clear service messaging, and easy contact paths.',
   },
   {
     number: '12', category: 'brand', type: 'ADVERTISING · CAMPAIGN PORTFOLIO',
     title: 'Prajjwal Patel — Adimize Portfolio',
     description: 'An advertising-oriented portfolio concept for presenting campaign strategy, creative direction, and digital marketing work.',
     tags: ['Advertising', 'Campaigns', 'Creative strategy', 'Portfolio'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'adimize',
+    status: 'CONCEPT / CASE STUDY', visual: 'adimize',
     previewTag: 'ADIMIZE', previewTitle: 'Campaigns with purpose.', previewSymbol: '↗',
     problem: 'Marketing work is easier to evaluate when the brief, creative choices, target audience, and intended outcome are connected.',
     approach: 'This portfolio direction brings campaign and advertising storytelling into a dedicated branded space.',
     testPlan: 'Check that examples are correctly labeled, hypothetical work is not presented as real client results, and contact paths work.',
-    next: 'Add verified case-study evidence and make concept-versus-client work explicit before publishing.',
+    next: 'Add verified case-study evidence and distinguish hypothetical work from actual client work.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This is a separate advertising portfolio concept from the Macaly workspace. Its project details are available here; its app is not publicly deployed.',
+    statusNote: 'An advertising portfolio concept for presenting campaign strategy, creative direction, and digital marketing work.',
   },
   {
     number: '13', category: 'brand', type: 'SALES · PRODUCT THINKING',
     title: 'Prajjwal Portfolio — Sales & Product',
     description: 'A business-facing portfolio concept focused on sales storytelling, product thinking, and the relationship between customer needs and business outcomes.',
     tags: ['Sales', 'Product strategy', 'Business outcomes', 'Portfolio'],
-    status: 'MACALY WORKSPACE DRAFT', visual: 'sales-product',
+    status: 'CONCEPT / CASE STUDY', visual: 'sales-product',
     previewTag: 'SALES / PRODUCT', previewTitle: 'From need to outcome.', previewSymbol: '↗',
     problem: 'Business-facing work can feel fragmented when product decisions and commercial outcomes are shown separately.',
     approach: 'This portfolio direction combines product and sales narratives into a single brand-led experience.',
@@ -197,7 +197,7 @@ const projects = [
     next: 'Consolidate verified examples while preserving this alternate portfolio as a separate entry in the project list.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'This is a separate portfolio concept in Macaly and remains visible in this portfolio hub even though it is not publicly deployed as a standalone app.',
+    statusNote: 'A separate portfolio concept focused on sales storytelling, product thinking, customer needs, and business outcomes.',
   },
   {
     number: '14', category: 'product', type: 'CRM · LEAD WORKFLOWS',
@@ -209,15 +209,15 @@ const projects = [
     problem: 'Leads can lose momentum when source, qualification, follow-up owner, and the next action are not tracked together.',
     approach: 'The app organizes leads in a pipeline and lets users filter, edit, qualify, and advance opportunities.',
     testPlan: 'Review database access rules, seed/demo data, mutation authorization, and whether one visitor can see or modify another visitor’s records.',
-    next: 'Complete access-control and data-isolation review, then publish a clean demo dataset if it is safe.',
+    next: 'Use synthetic lead records for demos and verify access controls before working with real customer data.',
     demoUrl: '',
     repoUrl: 'https://github.com/prajjwal-ptl/prajjwal-portfolio/blob/main/projects.html',
-    statusNote: 'The Macaly app uses a backend and writes pipeline data; it is not linked as an unrestricted public demo. The public GitHub portfolio contains a LeadFlow case study, not a separate standalone CRM source directory.',
+    statusNote: 'LeadFlow CRM demonstrates lead qualification, ownership, pipeline progression, and follow-up workflows. The public repository also contains a LeadFlow case study.',
   },
   {
     number: '15', category: 'brand', type: 'HTML · CSS · JAVASCRIPT',
     title: 'GitHub Portfolio Website',
-    description: 'The existing multi-page static website in your public GitHub repository, with home, projects, about, and contact pages, plus a GitHub Actions deployment workflow.',
+    description: 'The existing multi-page static website in your public GitHub repository, with home, projects, about, and contact pages, plus a GitHub Actions workflow.',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive design', 'GitHub Pages'],
     status: 'LIVE · GITHUB PAGES', visual: 'github-site',
     previewTag: 'PERSONAL PORTFOLIO / WEB', previewTitle: 'Work with a clear story.', previewSymbol: '◈',
@@ -239,7 +239,7 @@ const projects = [
     problem: 'Smart contracts need transparent, reviewable state transitions and careful handling of randomness and payouts.',
     approach: 'The repository includes a Soroban workspace and documents a dice-game contract concept. The README notes that its random-number generation needs improvement.',
     testPlan: 'Review the contract code and tests, examine authorization and payout logic, and replace weak randomness before any real-value use.',
-    next: 'Improve randomness and security, expand test coverage, and document deployment and testing steps.',
+    next: 'Improve randomness and security, expand test coverage, and document contract behavior and tests.',
     demoUrl: '',
     repoUrl: 'https://github.com/prajjwal-ptl/blockchain',
     statusNote: 'Only the public source repository is linked; this card does not claim the contract is audited, production-ready, or suitable for real-value betting.',
@@ -703,7 +703,7 @@ export function Portfolio() {
 
       <section className="work-section" id="work">
         <div className="section-kicker"><span>03 / SELECTED WORK</span><span className="kicker-rule" /><span className="section-side-note">EARLY BUILDS, REAL LEARNING</span></div>
-        <div className="work-heading"><h2>Every project.<br /><em>One place.</em></h2><p>All 14 other Macaly projects plus the 3 GitHub repositories are included here. Open a public demo or source when available, or use the case study to explore every workspace project. Nothing is hidden from the catalog.</p></div>
+        <div className="work-heading"><h2>Every project.<br /><em>One place.</em></h2><p>A complete collection of projects across AI, web, data, products, and business workflows. Open public demos and source repositories where available, or explore each project case study.</p></div>
         <div className="project-filters" role="group" aria-label="Filter projects">
           <button type="button" className={activeFilter === 'all' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('all')} aria-pressed={activeFilter === 'all'}>All projects <span>17</span></button>
           <button type="button" className={activeFilter === 'ai' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('ai')} aria-pressed={activeFilter === 'ai'}>AI & support <span>02</span></button>
@@ -741,7 +741,7 @@ export function Portfolio() {
           ))}
 
         </div>
-        <div className="honesty-note"><span>✳</span><p><strong>Full inventory, clearly labeled.</strong> This catalog includes all 14 other Macaly workspace projects and all 3 GitHub repositories. Public demo and source links are provided when they genuinely work. Apps that are not public, private, or connected to internal data remain listed with their own case-study details rather than broken or access-controlled links.</p></div>
+        <div className="honesty-note"><span>✳</span><p><strong>Project access, clearly labeled.</strong> Public demo and source links are provided where available. Concept work and restricted tools are labeled so visitors can distinguish case studies from publicly accessible demos.</p></div>
       </section>
 
       <section className="toolkit-section" id="toolkit">
@@ -780,7 +780,7 @@ export function Portfolio() {
 
       <section className="contact-section" id="contact">
         <div className="contact-orbit"><div className="contact-orbit-ring" /><div className="contact-orbit-core">P<span>.</span></div><span className="contact-star">✳</span></div>
-        <div className="contact-copy"><div className="section-kicker"><span>05 / NEXT CHAPTER</span></div><h2>Let’s make<br /><em>something useful.</em></h2><p>I'm open to entry-level opportunities in Python development, applied AI, automation, technical support and application support — roles where I can learn, contribute and grow.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div><small className="contact-note">Replace/add your final résumé and project links before sharing this demo with recruiters.</small></div>
+        <div className="contact-copy"><div className="section-kicker"><span>05 / NEXT CHAPTER</span></div><h2>Let’s make<br /><em>something useful.</em></h2><p>I'm open to entry-level opportunities in Python development, applied AI, automation, technical support and application support — roles where I can learn, contribute and grow.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
       </section>
       <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>DESIGNED TO GROW WITH THE WORK.</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
     </main>
