@@ -5,23 +5,8 @@ export const Route = createFileRoute('/')({ component: Portfolio })
 
 const projects = [
   {
-    number: '01', category: 'brand', type: 'WEB · TECHNICAL PORTFOLIO',
-    title: 'Prajjwal Portfolio — Technical Projects',
-    description: 'A portfolio concept for presenting software projects, technical learning, and clear project documentation.',
-    tags: ['Software projects', 'Web', 'Project documentation'],
-    status: 'LIVE · EXTERNAL DEMO', visual: 'sales-growth',
-    previewTag: 'TECHNICAL PORTFOLIO', previewTitle: 'Make the work easy to explore.', previewSymbol: '⌘',
-    problem: 'Business-facing work needs to communicate its value quickly and make the next step obvious.',
-    approach: 'This portfolio direction organizes project summaries and technical work into a focused website.',
-    testPlan: 'Review mobile layouts, contact paths, section navigation, and the clarity of every case-study claim.',
-    next: 'Keep the public site current with verified outcomes and useful project links.',
-    demoUrl: 'https://umvrwkq122sm1oz3eqlgisw8.macaly.app',
-    repoUrl: '',
-    statusNote: 'A separate portfolio concept focused on presenting software projects and technical work clearly.',
-  },
-  {
-    number: '02', category: 'ai', type: 'PYTHON · APPLIED AI · CUSTOMER SUPPORT',
-    title: 'CarePilot — AI Customer Support Assistant',
+    number: '01', category: 'ai', type: 'PYTHON · APPLIED AI · CUSTOMER SUPPORT',
+    title: 'CarePilot — Customer Support Retrieval Demo',
     description: 'A support assistant project with a self-contained browser demo and Python Streamlit source for FAQ retrieval, evidence-linked reply drafts, sentiment cues, categorization, and human-review escalation.',
     tags: ['Python', 'Streamlit', 'Sentence Transformers', 'ChromaDB', 'RAG'],
     status: 'PUBLIC BROWSER DEMO + SOURCE', visual: 'support',
@@ -35,187 +20,7 @@ const projects = [
     statusNote: 'The public browser demo uses local rules and a sample FAQ; it does not call the Python backend or an LLM API. The Python app and retrieval engine are separate source files.',
   },
   {
-    number: '03', category: 'data', type: 'DATA · CUSTOMER FEEDBACK',
-    title: 'Customer Feedback Dashboard',
-    description: 'A customer-feedback analytics interface with sample responses, headline metrics, sentiment and category filters, trend visuals, and a feedback-detail panel.',
-    tags: ['Analytics', 'Charts', 'Sentiment', 'Feedback ops'],
-    status: 'CONCEPT / CASE STUDY', visual: 'feedback',
-    previewTag: 'FEEDBACK ANALYTICS', previewTitle: 'Listen. Learn. Improve.', previewSymbol: '▦',
-    problem: 'Feedback is harder to act on when scores, trends, filters, and individual comments are disconnected.',
-    approach: 'The dashboard groups sample metrics, feedback trends, filters, and detail views in one interface.',
-    testPlan: 'Verify every navigation control, confirm filters affect results, and test empty and no-match states.',
-    next: 'Finish the functional review and label all sample records and figures before presenting it as a production analytics tool.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'The dashboard uses illustrative sample records, and its add-feedback control needs review before the interface can be presented as a production analytics tool.',
-  },
-  {
-    number: '04', category: 'product', type: 'SOCIAL IMPACT · PRODUCT DESIGN',
-    title: 'FoodRescue — Motion Prototype',
-    description: 'A food-rescue product prototype exploring restaurant surplus listings, NGO partner pickups, route coordination, sponsorship, and impact summaries.',
-    tags: ['Food rescue', 'Community', 'Product design', 'Impact'],
-    status: 'CONCEPT / CASE STUDY', visual: 'food',
-    previewTag: 'COMMUNITY NETWORK', previewTitle: 'Good food, better routes.', previewSymbol: '♻',
-    problem: 'Surplus food and community needs are difficult to coordinate when people, pickup windows, and routes are disconnected.',
-    approach: 'The prototype explores separate journeys for restaurants, NGO partners, and sponsors, with an animated sample impact dashboard.',
-    testPlan: 'Test all role switches, onboarding flows, route states, and whether illustrative impact figures are clearly explained.',
-    next: 'Run a usability pass on the primary journey and label simulated metrics as demo data.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'This motion-led product concept explores separate journeys for restaurants, NGO partners, and sponsors, with illustrative sample impact metrics.',
-  },
-  {
-    number: '05', category: 'data', type: 'DATA · DECISION INTELLIGENCE',
-    title: 'Real-Time Decision Intelligence Demo',
-    description: 'A decision dashboard concept combining KPI cards, anomaly alerts, forecast charts, and scenario controls for exploring operational changes.',
-    tags: ['KPIs', 'Forecasting', 'Anomaly signals', 'Scenarios'],
-    status: 'CONCEPT / CASE STUDY', visual: 'decision',
-    previewTag: 'DECISION INTELLIGENCE', previewTitle: 'See what changes next.', previewSymbol: '◉',
-    problem: 'Metrics are less useful if people cannot see unusual movement or compare potential outcomes.',
-    approach: 'The demo combines sample metric summaries, exception cues, forecast visuals, and what-if controls.',
-    testPlan: 'Check calculations, scenario behavior, chart labeling, and whether sample data is clearly distinguished from live business data.',
-    next: 'Document scenario assumptions and validate measures before using the demo for real decisions.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'This is a dashboard concept using sample metrics, anomaly cues, forecasts, and what-if scenarios; it is not connected to a live data source.',
-  },
-  {
-    number: '06', category: 'ai', type: 'AI · CONVERSATIONAL ANALYTICS',
-    title: 'AI Conversational BI Demo',
-    description: 'A conversational business-intelligence interface with suggested questions, query-led exploration, charts, and concise insight cards driven by sample data.',
-    tags: ['Conversational BI', 'Charts', 'Data insights', 'UI/UX'],
-    status: 'CONCEPT / CASE STUDY', visual: 'bi',
-    previewTag: 'CONVERSATIONAL BI', previewTitle: 'Ask your data.', previewSymbol: '◌',
-    problem: 'People often know the business question they want answered but not which dashboard or filter to start with.',
-    approach: 'The prototype pairs a question-led interface with static sample charts and insight cards to show a conversational analytics experience.',
-    testPlan: 'Confirm sample queries give predictable answers, labels preserve context, and no insight implies access to a live data source.',
-    next: 'Connect a documented dataset and explain the supported questions and model limitations.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'The prototype uses sample values and local query rules; it is not connected to company data or a live language model.',
-  },
-  {
-    number: '07', category: 'brand', type: 'PROJECT STUDIO · INTERNAL WORKFLOWS',
-    title: 'Agyatvyakti Workflow Studio',
-    description: 'An internal workflow workspace for organizing contacts, onboarding, projects, tasks, and deliverables.',
-    tags: ['Lead management', 'Client operations', 'CRM', 'Workflow design'],
-    status: 'INTERNAL TOOL · ACCESS RESTRICTED', visual: 'growth',
-    previewTag: 'WORKFLOW STUDIO', previewTitle: 'A clearer operating rhythm.', previewSymbol: '⌘',
-    problem: 'Studio operations become fragmented when onboarding, project planning, and delivery live in separate tools.',
-    approach: 'The workspace brings contacts, projects, tasks, and deliverables into one operational workspace.',
-    testPlan: 'Audit authentication and authorization on every list and mutation, validate environment secrets, and separate sample records from any real customer information.',
-    next: 'Complete a security review and create a clean public demo dataset before turning on public access.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'This project is included in full, but its backend manages lead and client operations. It is intentionally not linked to an unrestricted public preview until access controls and data isolation are checked.',
-  },
-  {
-    number: '08', category: 'product', type: 'PERSONAL FINANCE · PRIVATE WORKSPACE',
-    title: 'ClearLedger Personal',
-    description: 'A personal finance workspace for tracking income, expenses, debts, repayments, and recent transactions, with owner-token access controls.',
-    tags: ['Personal finance', 'Transactions', 'Debt tracking', 'Privacy'],
-    status: 'PRIVATE TOOL · ACCESS RESTRICTED', visual: 'ledger',
-    previewTag: 'CLEARLEDGER / PERSONAL', previewTitle: 'Your records, protected.', previewSymbol: '◎',
-    problem: 'Personal records require a focused way to track balances and activity without exposing financial details to other users.',
-    approach: 'The app uses an owner-authenticated workspace and separates debt tracking from income and expense activity.',
-    testPlan: 'Review owner-token issuance, unauthorized query and mutation behavior, session handling, and database authorization.',
-    next: 'Use synthetic data for testing and keep personal financial records private.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'Access to this personal-finance tool is restricted; this portfolio shows only a high-level project description.',
-  },
-  {
-    number: '09', category: 'brand', type: 'AI · PORTFOLIO EXPLORATION',
-    title: 'Dark Knight AI Portfolio',
-    description: 'An alternate portfolio direction exploring a cinematic dark identity, AI-focused storytelling, and project-first visual presentation.',
-    tags: ['AI', 'Portfolio design', 'Visual identity', 'Web'],
-    status: 'CONCEPT / CASE STUDY', visual: 'dark-portfolio',
-    previewTag: 'DARK KNIGHT / AI', previewTitle: 'Technology after dark.', previewSymbol: '✳',
-    problem: 'A portfolio needs a memorable identity while keeping the work, skills, and navigation easy to understand.',
-    approach: 'This alternate concept explores a darker visual language for presenting technical and AI-oriented work.',
-    testPlan: 'Check contrast, keyboard focus, responsive navigation, and whether the theme makes projects easier to evaluate.',
-    next: 'Reuse the strongest accessible ideas in the main portfolio while keeping this alternative concept documented separately.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'An alternate portfolio direction exploring a cinematic dark identity, AI-focused storytelling, and project-first visual presentation.',
-  },
-  {
-    number: '10', category: 'brand', type: 'INTERACTIVE DESIGN · 3D',
-    title: 'Prajjwal Portfolio — AI 3D Experience',
-    description: 'An alternate three-dimensional portfolio concept using spatial visuals, motion, and interaction to tell a technical project story.',
-    tags: ['3D visuals', 'Motion', 'Portfolio UX', 'Interaction'],
-    status: 'CONCEPT / CASE STUDY', visual: 'three-d',
-    previewTag: '3D EXPERIENCE', previewTitle: 'Ideas in motion.', previewSymbol: '◈',
-    problem: 'Interactive visuals can make a portfolio memorable, but must not make navigation or project detail harder to use.',
-    approach: 'The experience experiments with a motion-led spatial presentation and project-focused visual hierarchy.',
-    testPlan: 'Test load performance, keyboard and touch interaction, reduced-motion preferences, and mobile content hierarchy.',
-    next: 'Keep motion purposeful and retain accessible, readable project details on smaller screens.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'This alternate 3D portfolio explores spatial visuals, motion, and interactive project storytelling.',
-  },
-  {
-    number: '11', category: 'brand', type: 'BRAND · STUDIO WEBSITE',
-    title: 'Agyat Vyakti Studio',
-    description: 'A studio website concept for communicating a brand identity, services, and a consistent digital presence.',
-    tags: ['Studio', 'Brand website', 'Web design', 'Messaging'],
-    status: 'CONCEPT / CASE STUDY', visual: 'studio',
-    previewTag: 'STUDIO WEBSITE', previewTitle: 'Make the work visible.', previewSymbol: '✦',
-    problem: 'A studio presence needs a cohesive identity, a clear service story, and an easy way for visitors to make contact.',
-    approach: 'The site concept explores a branded presentation that organizes service messaging and the overall studio story.',
-    testPlan: 'Review responsive navigation, content hierarchy, accessibility, and all contact links.',
-    next: 'Align the final copy with the intended audience and ensure all contact links work.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'A studio website concept for presenting a cohesive brand identity, clear service messaging, and easy contact paths.',
-  },
-  {
-    number: '12', category: 'brand', type: 'WEB · VISUAL PORTFOLIO',
-    title: 'Prajjwal Patel — Visual Portfolio Concept',
-    description: 'A visual portfolio concept exploring layout, visual identity, and a clear presentation of selected work.',
-    tags: ['Visual design', 'Portfolio layout', 'Web'],
-    status: 'CONCEPT / CASE STUDY', visual: 'adimize',
-    previewTag: 'VISUAL PORTFOLIO', previewTitle: 'A clear visual direction.', previewSymbol: '◈',
-    problem: 'A portfolio is easier to navigate when visual choices support the work rather than distract from it.',
-    approach: 'This concept explores a distinct visual identity for presenting selected projects.',
-    testPlan: 'Check readability, responsive layouts, accessibility, and working navigation and contact links.',
-    next: 'Retain the visual elements that make project details easier to scan.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'A visual portfolio concept focused on layout, visual identity, and project presentation.',
-  },
-  {
-    number: '13', category: 'brand', type: 'SOFTWARE · PRODUCT THINKING',
-    title: 'Prajjwal Portfolio — Product & Software',
-    description: 'A portfolio concept focused on product thinking, user needs, and explaining software projects and their intended outcomes.',
-    tags: ['Software projects', 'Product thinking', 'User needs', 'Portfolio'],
-    status: 'CONCEPT / CASE STUDY', visual: 'sales-product',
-    previewTag: 'PRODUCT / SOFTWARE', previewTitle: 'From need to outcome.', previewSymbol: '⌘',
-    problem: 'Project stories can feel fragmented when user needs, design decisions, and implementation are shown separately.',
-    approach: 'This portfolio direction connects product thinking and software project narratives in one experience.',
-    testPlan: 'Review case-study logic, consistency of claims, mobile readability, and every call to action.',
-    next: 'Keep the project descriptions specific and distinguish concepts from publicly accessible work.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'A separate portfolio concept focused on product thinking, user needs, and software project presentation.',
-  },
-  {
-    number: '14', category: 'product', type: 'CRM · LEAD WORKFLOWS',
-    title: 'LeadFlow CRM',
-    description: 'A lead-management app concept with a drag-and-drop pipeline, lead records, qualification and follow-up fields, prioritization, and status changes.',
-    tags: ['CRM', 'Lead pipeline', 'Follow-up', 'Convex'],
-    status: 'INTERNAL APP · REVIEW BEFORE PUBLIC RELEASE', visual: 'crm',
-    previewTag: 'LEADFLOW / CRM', previewTitle: 'Every lead has a next step.', previewSymbol: '⌁',
-    problem: 'Leads can lose momentum when source, qualification, follow-up owner, and the next action are not tracked together.',
-    approach: 'The app organizes leads in a pipeline and lets users filter, edit, qualify, and advance opportunities.',
-    testPlan: 'Review database access rules, seed/demo data, mutation authorization, and whether one visitor can see or modify another visitor’s records.',
-    next: 'Use synthetic lead records for demos and verify access controls before working with real customer data.',
-    demoUrl: '',
-    repoUrl: 'https://github.com/prajjwal-ptl/prajjwal-portfolio/blob/main/projects.html',
-    statusNote: 'LeadFlow CRM demonstrates lead qualification, ownership, pipeline progression, and follow-up workflows. The public repository also contains a LeadFlow case study.',
-  },
-  {
-    number: '15', category: 'brand', type: 'HTML · CSS · JAVASCRIPT',
+    number: '02', category: 'web', type: 'HTML · CSS · JAVASCRIPT',
     title: 'GitHub Portfolio Website',
     description: 'The existing multi-page static website in your public GitHub repository, with home, projects, about, and contact pages, plus a GitHub Actions workflow.',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive design', 'GitHub Pages'],
@@ -230,8 +35,8 @@ const projects = [
     statusNote: 'The GitHub Pages website was checked and returned HTTP 200 on 19 October 2026. Its repository also contains the CarePilot browser demo.',
   },
   {
-    number: '16', category: 'blockchain', type: 'RUST · STELLAR SOROBAN',
-    title: 'Blockchain — Dice Game Smart Contract',
+    number: '03', category: 'blockchain', type: 'RUST · STELLAR SOROBAN',
+    title: 'Soroban Dice Game Contract Prototype',
     description: 'A public GitHub repository containing a Rust smart-contract workspace built around Stellar Soroban, with a documented dice-game contract concept.',
     tags: ['Rust', 'Stellar Soroban', 'Smart contracts', 'Blockchain'],
     status: 'PUBLIC GITHUB REPOSITORY', visual: 'blockchain',
@@ -244,289 +49,13 @@ const projects = [
     repoUrl: 'https://github.com/prajjwal-ptl/blockchain',
     statusNote: 'Only the public source repository is linked; this card does not claim the contract is audited, production-ready, or suitable for real-value betting.',
   },
-  {
-    number: '17', category: 'brand', type: 'PRIVATE REPOSITORY · PORTFOLIO EXPLORATION',
-    title: 'Prajjwal Portfolio — V2 Repository',
-    description: 'A second portfolio repository exists in the connected GitHub account and is currently marked private. It is included in the portfolio inventory so the repository is not silently omitted.',
-    tags: ['Portfolio', 'GitHub', 'Private source'],
-    status: 'PRIVATE GITHUB REPOSITORY', visual: 'portfolio-v2',
-    previewTag: 'PORTFOLIO / V2', previewTitle: 'An alternate build.', previewSymbol: '◈',
-    problem: 'Maintaining multiple portfolio versions can preserve experiments, but visitors need a clear single public entry point.',
-    approach: 'This repository is recorded as a separate portfolio version without exposing private source or attempting to change its visibility.',
-    testPlan: 'Review the contents and decide which finished work should be migrated into the public portfolio, rather than exposing the private repo.',
-    next: 'Keep the source private unless you explicitly choose to make it public; surface any shareable projects through public demos or this portfolio.',
-    demoUrl: '',
-    repoUrl: '',
-    statusNote: 'GitHub confirms this repository is private. The project is shown here for completeness, but its code link is intentionally not exposed to public visitors.',
-  },
-]
-
-const leetcodeBadges = [
-  {
-    "name": "500 Days Badge",
-    "date": "3 Nov 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/marketing/lg500.png"
-  },
-  {
-    "name": "365 Days Badge",
-    "date": "16 Jun 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/marketing/lg365.png"
-  },
-  {
-    "name": "200 Days Badge 2026",
-    "date": "1 Aug 2026",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/200_1080_1080.png"
-  },
-  {
-    "name": "100 Days Badge 2026",
-    "date": "16 Apr 2026",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/100_1080_1080.png"
-  },
-  {
-    "name": "50 Days Badge 2026",
-    "date": "22 Feb 2026",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/50_1080_1080.png"
-  },
-  {
-    "name": "Annual Badge 2025",
-    "date": "10 Nov 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/2025_lg.png"
-  },
-  {
-    "name": "200 Days Badge 2025",
-    "date": "29 Jul 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/lg200.png"
-  },
-  {
-    "name": "100 Days Badge 2025",
-    "date": "14 Apr 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/lg25100.png"
-  },
-  {
-    "name": "50 Days Badge 2025",
-    "date": "20 Feb 2025",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/others/lg2550.png"
-  },
-  {
-    "name": "200 Days Badge 2024",
-    "date": "24 Dec 2024",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-200-lg.png"
-  },
-  {
-    "name": "100 Days Badge 2024",
-    "date": "9 Sep 2024",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-100-lg.png"
-  },
-  {
-    "name": "50 Days Badge 2024",
-    "date": "20 Jul 2024",
-    "group": "consistency",
-    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-50-lg.png"
-  },
-  {
-    "name": "Sep LeetCoding Challenge 2026",
-    "date": "30 Sep 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-9.png"
-  },
-  {
-    "name": "Aug LeetCoding Challenge 2026",
-    "date": "31 Aug 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-8.png"
-  },
-  {
-    "name": "Jul LeetCoding Challenge 2026",
-    "date": "31 Jul 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-7.png"
-  },
-  {
-    "name": "Jun LeetCoding Challenge 2026",
-    "date": "30 Jun 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-6.png"
-  },
-  {
-    "name": "May LeetCoding Challenge 2026",
-    "date": "5 Jun 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-5.png"
-  },
-  {
-    "name": "Apr LeetCoding Challenge 2026",
-    "date": "30 Apr 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-4.png"
-  },
-  {
-    "name": "Mar LeetCoding Challenge 2026",
-    "date": "31 Mar 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-3.png"
-  },
-  {
-    "name": "Feb LeetCoding Challenge 2026",
-    "date": "28 Feb 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-2.png"
-  },
-  {
-    "name": "Jan LeetCoding Challenge 2026",
-    "date": "31 Jan 2026",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2026-1.png"
-  },
-  {
-    "name": "Dec LeetCoding Challenge 2025",
-    "date": "31 Dec 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-12.png"
-  },
-  {
-    "name": "Nov LeetCoding Challenge 2025",
-    "date": "30 Nov 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-11.png"
-  },
-  {
-    "name": "Oct LeetCoding Challenge 2025",
-    "date": "31 Oct 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-10.png"
-  },
-  {
-    "name": "Sep LeetCoding Challenge 2025",
-    "date": "30 Sep 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-9.png"
-  },
-  {
-    "name": "Aug LeetCoding Challenge 2025",
-    "date": "31 Aug 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-8.png"
-  },
-  {
-    "name": "Jul LeetCoding Challenge 2025",
-    "date": "31 Jul 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-7.png"
-  },
-  {
-    "name": "Jun LeetCoding Challenge 2025",
-    "date": "30 Jun 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-6.png"
-  },
-  {
-    "name": "May LeetCoding Challenge 2025",
-    "date": "1 Jun 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-5.png"
-  },
-  {
-    "name": "Apr LeetCoding Challenge 2025",
-    "date": "30 Apr 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-4.png"
-  },
-  {
-    "name": "Mar LeetCoding Challenge 2025",
-    "date": "31 Mar 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-3.png"
-  },
-  {
-    "name": "Feb LeetCoding Challenge 2025",
-    "date": "28 Feb 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-2.png"
-  },
-  {
-    "name": "Jan LeetCoding Challenge 2025",
-    "date": "31 Jan 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2025-1.png"
-  },
-  {
-    "name": "Dec LeetCoding Challenge 2024",
-    "date": "1 Jan 2025",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-12.png"
-  },
-  {
-    "name": "Nov LeetCoding Challenge 2024",
-    "date": "30 Nov 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-11.png"
-  },
-  {
-    "name": "Oct LeetCoding Challenge 2024",
-    "date": "31 Oct 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-10.png"
-  },
-  {
-    "name": "Sep LeetCoding Challenge 2024",
-    "date": "30 Sep 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-9.png"
-  },
-  {
-    "name": "Aug LeetCoding Challenge 2024",
-    "date": "31 Aug 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-8.png"
-  },
-  {
-    "name": "Jul LeetCoding Challenge 2024",
-    "date": "31 Jul 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-7.png"
-  },
-  {
-    "name": "Jun LeetCoding Challenge 2024",
-    "date": "30 Jun 2024",
-    "group": "daily",
-    "icon": "https://leetcode.com/static/images/badges/dcc-2024-6.png"
-  },
-  {
-    "name": "Introduction to Pandas",
-    "date": "9 Sep 2024",
-    "group": "study",
-    "icon": "https://assets.leetcode.com/static_assets/others/Introduction_to_Pandas_Badge.png"
-  },
-  {
-    "name": "Top SQL 50",
-    "date": "8 Sep 2024",
-    "group": "study",
-    "icon": "https://assets.leetcode.com/static_assets/others/Top_SQL_50.png"
-  },
-  {
-    "name": "LeetCode 75",
-    "date": "5 Sep 2024",
-    "group": "study",
-    "icon": "https://assets.leetcode.com/static_assets/others/LeetCode_75.png"
-  }
-] as const
+]] as const
 
 export function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 })
-  const [activeFilter, setActiveFilter] = useState<'all' | 'ai' | 'data' | 'product' | 'brand' | 'blockchain'>('all')
+  const [activeFilter, setActiveFilter] = useState<'all' | 'ai' | 'web' | 'blockchain'>('all')
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null)
   useEffect(() => {
     if (!selectedProject) return
@@ -703,13 +232,11 @@ export function Portfolio() {
 
       <section className="work-section" id="work">
         <div className="section-kicker"><span>03 / SELECTED WORK</span><span className="kicker-rule" /><span className="section-side-note">EARLY BUILDS, REAL LEARNING</span></div>
-        <div className="work-heading"><h2>Every project.<br /><em>One place.</em></h2><p>A complete collection of projects across AI, web, data, products, and business workflows. Open public demos and source repositories where available, or explore each project case study.</p></div>
+        <div className="work-heading"><h2>Selected work.<br /><em>One place.</em></h2><p>Three selected projects across applied AI, web development, and smart-contract experimentation. Explore each project’s available demo or source repository.</p></div>
         <div className="project-filters" role="group" aria-label="Filter projects">
-          <button type="button" className={activeFilter === 'all' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('all')} aria-pressed={activeFilter === 'all'}>All projects <span>17</span></button>
-          <button type="button" className={activeFilter === 'ai' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('ai')} aria-pressed={activeFilter === 'ai'}>AI & support <span>02</span></button>
-          <button type="button" className={activeFilter === 'data' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('data')} aria-pressed={activeFilter === 'data'}>Data & intelligence <span>02</span></button>
-          <button type="button" className={activeFilter === 'product' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('product')} aria-pressed={activeFilter === 'product'}>Product & workflow <span>03</span></button>
-          <button type="button" className={activeFilter === 'brand' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('brand')} aria-pressed={activeFilter === 'brand'}>Brands & portfolios <span>09</span></button>
+          <button type="button" className={activeFilter === 'all' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('all')} aria-pressed={activeFilter === 'all'}>Selected projects <span>03</span></button>
+          <button type="button" className={activeFilter === 'ai' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('ai')} aria-pressed={activeFilter === 'ai'}>AI & support <span>01</span></button>
+          <button type="button" className={activeFilter === 'web' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('web')} aria-pressed={activeFilter === 'web'}>Web & portfolio <span>01</span></button>
           <button type="button" className={activeFilter === 'blockchain' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('blockchain')} aria-pressed={activeFilter === 'blockchain'}>Blockchain <span>01</span></button>
         </div>
         <div className="project-grid">
@@ -741,7 +268,7 @@ export function Portfolio() {
           ))}
 
         </div>
-        <div className="honesty-note"><span>✳</span><p><strong>Project access, clearly labeled.</strong> Public demo and source links are provided where available. Concept work and restricted tools are labeled so visitors can distinguish case studies from publicly accessible demos.</p></div>
+        
       </section>
 
       <section className="toolkit-section" id="toolkit">
