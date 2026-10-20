@@ -13,6 +13,6 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "theme_color": "#080b1b",
-  "background_color": "#050711"
+  "theme_color": "#f5f2ea",
+  "background_color": "#f5f2ea"
 }
