@@ -522,7 +522,7 @@ const leetcodeBadges = [
   }
 ] as const
 
-function Portfolio() {
+export function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
   const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 })

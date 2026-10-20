@@ -34,16 +34,17 @@ jobs:
           cache: npm
           cache-dependency-path: macaly-3d-portfolio/package-lock.json
 
-      - name: Install and build the 3D portfolio
+      - name: Install, test and build the 3D portfolio
         working-directory: macaly-3d-portfolio
-        env:
-          GITHUB_PAGES_BUILD: 'true'
-          NITRO_PRESET: github_pages
         run: |
           npm ci
-          npm run build
-          test -s .output/public/index.html
-          grep -q "Building useful" .output/public/index.html
+          npm test
+          npm run build:pages
+          if [ ! -s .output-pages/index.html ] && [ -s .output-pages/github-pages.html ]; then
+            cp .output-pages/github-pages.html .output-pages/index.html
+          fi
+          test -s .output-pages/index.html
+          find .output-pages/assets -type f -name '*.js' | grep -q .
 
       - name: Assemble existing site and 3D portfolio
         shell: bash
@@ -51,7 +52,7 @@ jobs:
           set -euo pipefail
           mkdir -p .pages-site/macaly-3d-portfolio
           cp -a .nojekyll index.html about.html contact.html projects.html script.js site.json styles.css projects .pages-site/
-          cp -a macaly-3d-portfolio/.output/public/. .pages-site/macaly-3d-portfolio/
+          cp -a macaly-3d-portfolio/.output-pages/. .pages-site/macaly-3d-portfolio/
           touch .pages-site/.nojekyll
           test -s .pages-site/index.html
           test -s .pages-site/macaly-3d-portfolio/index.html

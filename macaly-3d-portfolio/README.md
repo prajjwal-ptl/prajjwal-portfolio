@@ -1,10 +1,10 @@
 # Prajjwal Patel — 3D AI Developer Portfolio
 
-This folder contains the React/TypeScript source for the 3D AI developer portfolio. It is served by GitHub Pages at:
+The React/TypeScript portfolio source is maintained in this folder and deployed through GitHub Pages at:
 
 **https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/**
 
-The older static portfolio remains at the repository root:
+The pre-existing static portfolio remains available at:
 https://prajjwal-ptl.github.io/prajjwal-portfolio/
 
 ## Visual direction
@@ -15,22 +15,21 @@ https://prajjwal-ptl.github.io/prajjwal-portfolio/
 - Responsive layout and accessible, keyboard-friendly interactions
 - Full 17-project catalog and 43 LeetCode achievement entries
 
-## Key files
+## Files
 
 - `src/routes/index.tsx` — portfolio content and interactions
-- `src/styles.css` — visual system and responsive styling
-- `vite.config.ts` — Macaly development settings and GitHub Pages static-build options
+- `src/github-pages.tsx` — static React mount used for GitHub Pages
+- `github-pages.html` — static HTML entry
+- `vite.pages.config.ts` — GitHub Pages base path and static build
+- `vite.config.ts` — original Macaly/TanStack development configuration
 - `NEXT_AI_HANDOFF.md` — instructions for the next AI/developer
 
-## Local development
+## Build
 
 ```bash
 npm ci
-npm run dev
 npm test
-npm run build
+npm run build:pages
 ```
 
-For a GitHub Pages-equivalent local build, set `GITHUB_PAGES_BUILD=true` and `NITRO_PRESET=github_pages` before running `npm run build`.
-
-The app includes Macaly Bridge and Convex integration source. Do not commit secrets or environment files. The live static portfolio renders the public-facing page; server-only integration features require a compatible service/configuration and must not be assumed to work on GitHub Pages.
+GitHub Pages is static hosting. The public page uses the existing portfolio component and CSS in a client-rendered React entry; it does not rely on server-side Macaly Bridge/Convex behavior. Do not commit secrets, tokens, or private data.
