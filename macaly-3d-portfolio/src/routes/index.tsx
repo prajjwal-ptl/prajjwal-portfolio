@@ -5,19 +5,19 @@ export const Route = createFileRoute('/')({ component: Portfolio })
 
 const projects = [
   {
-    number: '01', category: 'brand', type: 'SALES · GROWTH · CONVERSION',
-    title: 'Prajjwal Portfolio — Sales & Growth',
-    description: 'A sales-and-growth portfolio focused on campaign thinking, client communication, conversion journeys, and business-facing project storytelling.',
-    tags: ['Sales', 'Growth strategy', 'Conversion', 'Web'],
+    number: '01', category: 'brand', type: 'WEB · TECHNICAL PORTFOLIO',
+    title: 'Prajjwal Portfolio — Technical Projects',
+    description: 'A portfolio concept for presenting software projects, technical learning, and clear project documentation.',
+    tags: ['Software projects', 'Web', 'Project documentation'],
     status: 'LIVE · EXTERNAL DEMO', visual: 'sales-growth',
-    previewTag: 'SALES / GROWTH', previewTitle: 'Turn interest into action.', previewSymbol: '↗',
+    previewTag: 'TECHNICAL PORTFOLIO', previewTitle: 'Make the work easy to explore.', previewSymbol: '⌘',
     problem: 'Business-facing work needs to communicate its value quickly and make the next step obvious.',
-    approach: 'This portfolio direction organizes sales, growth, and conversion storytelling into a focused website.',
+    approach: 'This portfolio direction organizes project summaries and technical work into a focused website.',
     testPlan: 'Review mobile layouts, contact paths, section navigation, and the clarity of every case-study claim.',
     next: 'Keep the public site current with verified outcomes and useful project links.',
     demoUrl: 'https://umvrwkq122sm1oz3eqlgisw8.macaly.app',
     repoUrl: '',
-    statusNote: 'A separate sales-and-growth portfolio concept focused on campaign thinking, client communication, conversion journeys, and business-facing storytelling.',
+    statusNote: 'A separate portfolio concept focused on presenting software projects and technical work clearly.',
   },
   {
     number: '02', category: 'ai', type: 'PYTHON · APPLIED AI · CUSTOMER SUPPORT',
@@ -95,14 +95,14 @@ const projects = [
     statusNote: 'The prototype uses sample values and local query rules; it is not connected to company data or a live language model.',
   },
   {
-    number: '07', category: 'brand', type: 'GROWTH STUDIO · INTERNAL WORKFLOWS',
-    title: 'Agyatvyakti Growth Studio',
-    description: 'A full growth-studio command centre for managing prospects, outreach, proposals, onboarding, clients, projects, tasks, deliverables, and sales progress.',
+    number: '07', category: 'brand', type: 'PROJECT STUDIO · INTERNAL WORKFLOWS',
+    title: 'Agyatvyakti Workflow Studio',
+    description: 'An internal workflow workspace for organizing contacts, onboarding, projects, tasks, and deliverables.',
     tags: ['Lead management', 'Client operations', 'CRM', 'Workflow design'],
     status: 'INTERNAL TOOL · ACCESS RESTRICTED', visual: 'growth',
-    previewTag: 'GROWTH STUDIO', previewTitle: 'A clearer operating rhythm.', previewSymbol: '↗',
-    problem: 'Studio operations become fragmented when outreach, client onboarding, proposals, and delivery live in separate tools.',
-    approach: 'The workspace brings leads, business contacts, outreach, sales records, projects, tasks, and deliverables into one operational command centre.',
+    previewTag: 'WORKFLOW STUDIO', previewTitle: 'A clearer operating rhythm.', previewSymbol: '⌘',
+    problem: 'Studio operations become fragmented when onboarding, project planning, and delivery live in separate tools.',
+    approach: 'The workspace brings contacts, projects, tasks, and deliverables into one operational workspace.',
     testPlan: 'Audit authentication and authorization on every list and mutation, validate environment secrets, and separate sample records from any real customer information.',
     next: 'Complete a security review and create a clean public demo dataset before turning on public access.',
     demoUrl: '',
@@ -170,34 +170,34 @@ const projects = [
     statusNote: 'A studio website concept for presenting a cohesive brand identity, clear service messaging, and easy contact paths.',
   },
   {
-    number: '12', category: 'brand', type: 'ADVERTISING · CAMPAIGN PORTFOLIO',
-    title: 'Prajjwal Patel — Adimize Portfolio',
-    description: 'An advertising-oriented portfolio concept for presenting campaign strategy, creative direction, and digital marketing work.',
-    tags: ['Advertising', 'Campaigns', 'Creative strategy', 'Portfolio'],
+    number: '12', category: 'brand', type: 'WEB · VISUAL PORTFOLIO',
+    title: 'Prajjwal Patel — Visual Portfolio Concept',
+    description: 'A visual portfolio concept exploring layout, visual identity, and a clear presentation of selected work.',
+    tags: ['Visual design', 'Portfolio layout', 'Web'],
     status: 'CONCEPT / CASE STUDY', visual: 'adimize',
-    previewTag: 'ADIMIZE', previewTitle: 'Campaigns with purpose.', previewSymbol: '↗',
-    problem: 'Marketing work is easier to evaluate when the brief, creative choices, target audience, and intended outcome are connected.',
-    approach: 'This portfolio direction brings campaign and advertising storytelling into a dedicated branded space.',
-    testPlan: 'Check that examples are correctly labeled, hypothetical work is not presented as real client results, and contact paths work.',
-    next: 'Add verified case-study evidence and distinguish hypothetical work from actual client work.',
+    previewTag: 'VISUAL PORTFOLIO', previewTitle: 'A clear visual direction.', previewSymbol: '◈',
+    problem: 'A portfolio is easier to navigate when visual choices support the work rather than distract from it.',
+    approach: 'This concept explores a distinct visual identity for presenting selected projects.',
+    testPlan: 'Check readability, responsive layouts, accessibility, and working navigation and contact links.',
+    next: 'Retain the visual elements that make project details easier to scan.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'An advertising portfolio concept for presenting campaign strategy, creative direction, and digital marketing work.',
+    statusNote: 'A visual portfolio concept focused on layout, visual identity, and project presentation.',
   },
   {
-    number: '13', category: 'brand', type: 'SALES · PRODUCT THINKING',
-    title: 'Prajjwal Portfolio — Sales & Product',
-    description: 'A business-facing portfolio concept focused on sales storytelling, product thinking, and the relationship between customer needs and business outcomes.',
-    tags: ['Sales', 'Product strategy', 'Business outcomes', 'Portfolio'],
+    number: '13', category: 'brand', type: 'SOFTWARE · PRODUCT THINKING',
+    title: 'Prajjwal Portfolio — Product & Software',
+    description: 'A portfolio concept focused on product thinking, user needs, and explaining software projects and their intended outcomes.',
+    tags: ['Software projects', 'Product thinking', 'User needs', 'Portfolio'],
     status: 'CONCEPT / CASE STUDY', visual: 'sales-product',
-    previewTag: 'SALES / PRODUCT', previewTitle: 'From need to outcome.', previewSymbol: '↗',
-    problem: 'Business-facing work can feel fragmented when product decisions and commercial outcomes are shown separately.',
-    approach: 'This portfolio direction combines product and sales narratives into a single brand-led experience.',
+    previewTag: 'PRODUCT / SOFTWARE', previewTitle: 'From need to outcome.', previewSymbol: '⌘',
+    problem: 'Project stories can feel fragmented when user needs, design decisions, and implementation are shown separately.',
+    approach: 'This portfolio direction connects product thinking and software project narratives in one experience.',
     testPlan: 'Review case-study logic, consistency of claims, mobile readability, and every call to action.',
-    next: 'Consolidate verified examples while preserving this alternate portfolio as a separate entry in the project list.',
+    next: 'Keep the project descriptions specific and distinguish concepts from publicly accessible work.',
     demoUrl: '',
     repoUrl: '',
-    statusNote: 'A separate portfolio concept focused on sales storytelling, product thinking, customer needs, and business outcomes.',
+    statusNote: 'A separate portfolio concept focused on product thinking, user needs, and software project presentation.',
   },
   {
     number: '14', category: 'product', type: 'CRM · LEAD WORKFLOWS',
@@ -564,9 +564,9 @@ export function Portfolio() {
 
       <section className="hero-section" id="home">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="status-dot" /> OPEN TO ENTRY-LEVEL OPPORTUNITIES <span className="eyebrow-line" /></div>
-          <h1>Building useful<br />things with <em>Python</em><span className="title-period">.</span></h1>
-          <p className="hero-lede">I’m Prajjwal — a Computer Science graduate exploring applied AI, automation, and thoughtful software that makes everyday work easier.</p>
+          <div className="eyebrow"><span className="status-dot" /> TARGETING JUNIOR GENAI · PYTHON · AI / ML ROLES <span className="eyebrow-line" /></div>
+          <h1>Junior GenAI<br />developer with <em>Python</em><span className="title-period">.</span></h1>
+          <p className="hero-lede">I’m Prajjwal, a 2026 B.Tech CSE graduate building toward GenAI, AI/ML, and data science roles, with Java as my main problem-solving language on LeetCode.</p>
           <div className="hero-actions">
             <a className="button-primary" href="#work">Explore my work <span>↘</span></a>
             <a className="button-text" href="#about">A little about me <span>↗</span></a>
@@ -574,7 +574,7 @@ export function Portfolio() {
           <div className="hero-meta">
             <div><span className="meta-label">BASE</span><strong>Bengaluru, India <i>↗</i></strong></div>
             <div><span className="meta-label">BACKGROUND</span><strong>B.Tech CSE · 2026</strong></div>
-            <div><span className="meta-label">CURRENT FOCUS</span><strong>Python + Applied AI</strong></div>
+            <div><span className="meta-label">TARGET ROLE</span><strong>Junior GenAI · Python · AI/ML</strong></div>
           </div>
         </div>
 
@@ -593,9 +593,9 @@ export function Portfolio() {
             <div className="planet-ring" />
             <div className="planet-cut" />
           </div>
-          <div className="floating-chip chip-python"><span className="chip-icon">Py</span><span>PYTHON <small>CORE LANGUAGE</small></span></div>
-          <div className="floating-chip chip-ai"><span className="chip-symbol">✳</span><span>APPLIED AI <small>BUILD · TEST · IMPROVE</small></span></div>
-          <div className="floating-chip chip-api"><span className="chip-symbol">{'{ }'}</span><span>API WORKFLOWS <small>CONNECT THE DOTS</small></span></div>
+          <div className="floating-chip chip-python"><span className="chip-icon">J</span><span>JAVA <small>LEETCODE · DSA</small></span></div>
+          <div className="floating-chip chip-ai"><span className="chip-symbol">Py</span><span>PYTHON <small>GENAI LEARNING FOCUS</small></span></div>
+          <div className="floating-chip chip-api"><span className="chip-symbol">✳</span><span>GENAI · AI / ML <small>LEARNING BY BUILDING</small></span></div>
           <div className="stage-caption"><span>FIG. 01</span><span>IDEAS → WORKING SOFTWARE</span></div>
           <div className="stage-cross cross-one">+</div><div className="stage-cross cross-two">+</div>
         </div>
@@ -746,12 +746,12 @@ export function Portfolio() {
 
       <section className="toolkit-section" id="toolkit">
         <div className="section-kicker"><span>04 / MY TOOLKIT</span><span className="kicker-rule" /><span className="section-side-note">LEARNING BY BUILDING</span></div>
-        <div className="toolkit-heading"><h2>Tools are useful.<br /><em>Thinking matters more.</em></h2><p>I’m focused on strengthening the fundamentals and using each tool where it solves a real problem.</p></div>
+        <div className="toolkit-heading"><h2>Core skills.<br /><em>Focused next steps.</em></h2><p>Java is my strongest documented language through LeetCode practice. I’m building my Python foundation and learning toward GenAI, AI/ML, and data science roles.</p></div>
         <div className="toolkit-grid">
-          <div className="toolkit-card"><span className="tool-number">01</span><div className="tool-icon python-icon">Py</div><h3>Python & data</h3><p>Core programming, data handling, scripting and clean, readable code.</p><div className="tool-tags"><span>Python</span><span>JSON</span><span>Data basics</span></div></div>
-          <div className="toolkit-card"><span className="tool-number">02</span><div className="tool-icon ai-icon">✳</div><h3>Applied AI</h3><p>Learning how LLMs, retrieval and evaluation can support practical workflows.</p><div className="tool-tags"><span>LLM concepts</span><span>RAG concepts</span><span>Evaluation</span></div></div>
-          <div className="toolkit-card"><span className="tool-number">03</span><div className="tool-icon api-icon">{'{ }'}</div><h3>Web & APIs</h3><p>Connecting interfaces to services and making software easier to use.</p><div className="tool-tags"><span>REST basics</span><span>HTML / CSS</span><span>React basics</span></div></div>
-          <div className="toolkit-card"><span className="tool-number">04</span><div className="tool-icon git-icon">⌘</div><h3>Build & improve</h3><p>Version control, documentation, testing and learning from feedback.</p><div className="tool-tags"><span>Git / GitHub</span><span>Debugging</span><span>README</span></div></div>
+          <div className="toolkit-card"><span className="tool-number">01</span><div className="tool-icon api-icon">J</div><h3>Java & problem solving</h3><p>My main LeetCode language, backed by consistent practice with algorithmic problems.</p><div className="tool-tags"><span>Java</span><span>DSA practice</span><span>LeetCode</span></div></div>
+          <div className="toolkit-card"><span className="tool-number">02</span><div className="tool-icon python-icon">Py</div><h3>Python foundations</h3><p>Developing programming, scripting, and data-handling fundamentals for AI-focused work.</p><div className="tool-tags"><span>Python</span><span>JSON</span><span>Data basics</span></div></div>
+          <div className="toolkit-card"><span className="tool-number">03</span><div className="tool-icon ai-icon">✳</div><h3>GenAI & AI/ML learning</h3><p>Exploring LLM and retrieval concepts while building toward practical AI/ML projects.</p><div className="tool-tags"><span>LLM concepts</span><span>RAG concepts</span><span>ML foundations</span></div></div>
+          <div className="toolkit-card"><span className="tool-number">04</span><div className="tool-icon git-icon">▦</div><h3>Data science foundations</h3><p>Practising database queries and data manipulation through structured problem solving.</p><div className="tool-tags"><span>MySQL</span><span>Pandas</span><span>Data basics</span></div></div>
         </div>
       </section>
 
@@ -780,9 +780,9 @@ export function Portfolio() {
 
       <section className="contact-section" id="contact">
         <div className="contact-orbit"><div className="contact-orbit-ring" /><div className="contact-orbit-core">P<span>.</span></div><span className="contact-star">✳</span></div>
-        <div className="contact-copy"><div className="section-kicker"><span>05 / NEXT CHAPTER</span></div><h2>Let’s make<br /><em>something useful.</em></h2><p>I'm open to entry-level opportunities in Python development, applied AI, automation, technical support and application support — roles where I can learn, contribute and grow.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
+        <div className="contact-copy"><div className="section-kicker"><span>05 / LET’S CONNECT</span></div><h2>Ready to build<br /><em>and keep learning.</em></h2><p>I’m seeking junior GenAI and Python-focused opportunities, with an interest in AI/ML and data science. I bring a strong Java problem-solving foundation and am continuing to build my Python and applied-AI skills.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
       </section>
-      <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>DESIGNED TO GROW WITH THE WORK.</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
+      <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>BUILT THROUGH PRACTICE.</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
     </main>
   )
 }
