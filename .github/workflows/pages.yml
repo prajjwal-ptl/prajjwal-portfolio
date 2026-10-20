@@ -78,6 +78,51 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Verify the live portfolio renders in Chromium
+        working-directory: macaly-3d-portfolio
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --package-lock=false playwright
+          npx playwright install chromium
+          node --input-type=module <<'NODE'
+          import { chromium } from 'playwright'
+
+          const browser = await chromium.launch({ headless: true })
+          const page = await browser.newPage()
+          const pageErrors = []
+          page.on('pageerror', (error) => pageErrors.push(error.message))
+
+          try {
+            const response = await page.goto('https://prajjwal-ptl.github.io/prajjwal-portfolio/', {
+              waitUntil: 'domcontentloaded',
+              timeout: 60000,
+            })
+            if (!response || response.status() !== 200) {
+              throw new Error(`Live homepage returned HTTP ${response?.status() ?? 'no response'}`)
+            }
+
+            try {
+              await page.getByRole('heading', { name: /junior GenAI roles/i }).waitFor({ timeout: 15000 })
+              await page.getByText('CarePilot — Customer Support Retrieval Demo', { exact: true }).waitFor({ timeout: 5000 })
+              await page.getByText('GitHub Portfolio Website', { exact: true }).waitFor({ timeout: 5000 })
+              await page.getByText('LeetCode 75', { exact: true }).waitFor({ timeout: 5000 })
+            } catch (error) {
+              const rootText = await page.locator('#root').innerText().catch(() => '<no #root element>')
+              throw new Error(
+                `Live page did not render expected portfolio content. Title=${await page.title()}; rootText=${rootText.slice(0, 500)}; pageErrors=${pageErrors.join(' | ') || '<none>'}; waitError=${error.message}`,
+              )
+            }
+
+            if (pageErrors.length > 0) {
+              throw new Error(`Browser runtime errors: ${pageErrors.join(' | ')}`)
+            }
+            console.log('Chromium verified the live hero, selected projects, and LeetCode section rendered.')
+          } finally {
+            await browser.close()
+          }
+          NODE
+
       - name: Verify published portfolio URLs
         shell: bash
         run: |
