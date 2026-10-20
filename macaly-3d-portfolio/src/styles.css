@@ -309,3 +309,10 @@ button{font:inherit}
 .case-screenshot-prompt{font:8px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:#8b9ac0}
 .case-screenshot-slot figcaption{margin-top:7px;text-align:right;color:#8492b2;font:7px 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
 @media(max-width:640px){.case-screenshot-frame{min-height:150px;padding:18px}.case-screenshot-frame strong{font-size:10px}.case-grid article{min-height:unset}}
+
+/* Plain first-person workflow copy and single remaining hero link. */
+.hero-bottomline{justify-content:flex-end}
+.workflow-description{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;max-width:1100px}
+.workflow-description p{margin:0;padding-top:15px;border-top:1px solid rgba(133,157,255,.22);color:#b0bacb;font-size:12px;line-height:1.8}
+@media(max-width:900px){.workflow-description{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}}
+@media(max-width:640px){.workflow-description{grid-template-columns:1fr;gap:12px}.workflow-description p{font-size:11px;line-height:1.8}}
