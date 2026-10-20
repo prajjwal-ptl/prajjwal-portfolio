@@ -71,6 +71,10 @@ jobs:
         with:
           path: .pages-site
 
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
       - name: Verify published portfolio URLs
         shell: bash
         run: |
@@ -83,7 +87,3 @@ jobs:
           done
           curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -fsS "$base/portfolio.html" -o /tmp/portfolio.html
           grep -q '<title>Prajjwal Patel' /tmp/portfolio.html
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
