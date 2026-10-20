@@ -10,7 +10,7 @@ const projects = [
     description: 'A support assistant project with a self-contained browser demo and Python Streamlit source for FAQ retrieval, evidence-linked reply drafts, sentiment cues, categorization, and human-review escalation.',
     tags: ['Python', 'Streamlit', 'Sentence Transformers', 'ChromaDB', 'RAG'],
     status: 'PUBLIC BROWSER DEMO + SOURCE', visual: 'support',
-    previewTag: 'CARE / PILOT · SUPPORT COPILOT', previewTitle: 'Evidence before answers.', previewSymbol: '✳',
+    previewTag: 'CARE / PILOT · SUPPORT COPILOT', previewTitle: 'Evidence before answers.', previewSymbol: 'C',
     whatBuilt: 'I built a Python Streamlit support assistant for FAQ retrieval and evidence-linked reply drafts. It uses Sentence Transformers, ChromaDB, a keyword fallback, optional LLM drafting, sentiment/category signals, and an escalation flag. The browser demo uses local rules and sample FAQs.',
     problemSolved: 'I designed it to help support agents find relevant policy information and see the FAQ evidence behind a reply, rather than treat an unsupported answer as certain.',
     learned: 'I learned to keep retrieval, reply drafting, and human review separate. The browser demo does not call the Python backend or an LLM API.',
@@ -57,7 +57,6 @@ const projects = [
 export function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
-  const [heroPointer, setHeroPointer] = useState({ x: 0, y: 0 })
   const [activeFilter, setActiveFilter] = useState<'all' | 'ai' | 'web' | 'blockchain'>('all')
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null)
   useEffect(() => {
@@ -96,7 +95,7 @@ export function Portfolio() {
 
       <section className="hero-section" id="home">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="status-dot" /> I’M TARGETING JUNIOR GENAI / PYTHON ROLES <span className="eyebrow-line" /></div>
+          <div className="eyebrow"><span className="status-dot" /> Target role: Junior GenAI / Python <span className="eyebrow-line" /></div>
           <h1>I’m aiming for<br />junior GenAI <em>roles</em><span className="title-period">.</span></h1>
           <p className="hero-lede">I graduated in 2026 with a B.Tech in Computer Science. I’m targeting Python-focused GenAI roles and learning toward AI/ML and data science. I use Java for most of my LeetCode work.</p>
           <div className="hero-actions">
@@ -110,27 +109,10 @@ export function Portfolio() {
           </div>
         </div>
 
-        <div className="hero-stage" aria-label="Interactive abstract 3D orbit illustration" onMouseMove={(event) => {
-          const bounds = event.currentTarget.getBoundingClientRect()
-          const x = (event.clientX - bounds.left) / bounds.width - 0.5
-          const y = (event.clientY - bounds.top) / bounds.height - 0.5
-          setHeroPointer({ x: Math.round(x * 22), y: Math.round(y * 22) })
-        }} onMouseLeave={() => setHeroPointer({ x: 0, y: 0 })}>
-          <div className="stage-grid" />
-          <div className="orbit orbit-one" />
-          <div className="orbit orbit-two" />
-          <div className="orbit orbit-three" />
-          <div className="planet" style={{ translate: `${heroPointer.x}px ${heroPointer.y}px` }}> 
-            <div className="planet-shine" />
-            <div className="planet-ring" />
-            <div className="planet-cut" />
-          </div>
-          <div className="floating-chip chip-python"><span className="chip-icon">J</span><span>JAVA <small>LEETCODE · DSA</small></span></div>
-          <div className="floating-chip chip-ai"><span className="chip-symbol">Py</span><span>PYTHON <small>GENAI LEARNING FOCUS</small></span></div>
-          <div className="floating-chip chip-api"><span className="chip-symbol">✳</span><span>GENAI · AI / ML <small>LEARNING BY BUILDING</small></span></div>
-          <div className="stage-caption"><span>FIG. 01</span><span>IDEAS → WORKING SOFTWARE</span></div>
-          <div className="stage-cross cross-one">+</div><div className="stage-cross cross-two">+</div>
-        </div>
+        <figure className="hero-portrait-wrap">
+          <img className="hero-portrait" src="/prajjwal-portfolio/macaly-3d-portfolio/prajjwal-portrait.webp" alt="Portrait of Prajjwal Patel" />
+          <figcaption>Prajjwal Patel · 2026 Computer Science graduate</figcaption>
+        </figure>
         <div className="hero-bottomline"><a href="#work">SCROLL TO EXPLORE ↓</a></div>
       </section>
 
@@ -146,31 +128,31 @@ export function Portfolio() {
       </section>
 
       <section className="proof-strip" aria-label="Portfolio highlights">
-        <div className="proof-intro"><span className="section-kicker">A FEW FACTS, NO FLUFF</span><p>Grounded in fundamentals.<br /><em>Built by learning.</em></p></div>
+        <div className="proof-intro"><span className="section-kicker">Profile highlights</span><p>LeetCode and education</p></div>
         <div className="proof-item"><strong>1,023</strong><span>LeetCode problems solved</span></div>
         <div className="proof-item"><strong>43</strong><span>LeetCode badges earned</span></div>
         <div className="proof-item"><strong>7.73</strong><span>CGPA · B.Tech CSE</span></div>
       </section>
 
       <section className="manifesto" id="about">
-        <div className="section-kicker"><span>01 / ABOUT ME</span><span className="kicker-rule" /></div>
+        <div className="section-kicker"><span>About me</span><span className="kicker-rule" /></div>
         <div className="manifesto-grid">
           <h2>About me</h2>
           <div className="manifesto-copy">
             <p>I studied Computer Science at Oriental College of Technology in Bhopal and graduated in 2026.</p>
             <p>I enjoy breaking problems into smaller parts and working out how a tool should behave.</p>
             <p>I care about making information easy to check, especially when software suggests an answer. CarePilot reflects that interest through FAQ evidence and human review.</p>
-            <div className="education-stamp"><span className="stamp-icon">✳</span><span><small>EDUCATION</small><strong>B.Tech · Computer Science Engineering</strong><small>ORIENTAL COLLEGE OF TECHNOLOGY, BHOPAL · CGPA 7.73</small></span></div>
+            <div className="education-stamp"><span className="stamp-icon">CS</span><span><small>EDUCATION</small><strong>B.Tech · Computer Science Engineering</strong><small>ORIENTAL COLLEGE OF TECHNOLOGY, BHOPAL · CGPA 7.73</small></span></div>
           </div>
         </div>
       </section>
 
       <section className="leetcode-section" id="leetcode" aria-labelledby="leetcode-heading">
-        <div className="section-kicker"><span>02 / LEETCODE ACHIEVEMENTS</span><span className="kicker-rule" /><span className="section-side-note">PUBLIC PROFILE SNAPSHOT · 19 OCT 2026</span></div>
+        <div className="section-kicker"><span>LeetCode achievements</span><span className="kicker-rule" /><span className="section-side-note">Public profile snapshot: 19 Oct 2026</span></div>
         <div className="leetcode-heading-row">
           <div className="leetcode-heading-copy">
             <span className="leetcode-eyebrow"><span className="leetcode-pulse" /> PROFILE VERIFIED FROM LEETCODE PUBLIC DATA</span>
-            <h2 id="leetcode-heading">A thousand problems.<br /><em>Years of consistency.</em></h2>
+            <h2 id="leetcode-heading">My LeetCode activity</h2>
             <p>My problem-solving record spans interview-style algorithms, database queries, data manipulation, and repeated daily practice. The numbers and badge list below were read from my public LeetCode profile.</p>
           </div>
           <a className="leetcode-profile-button" href="https://leetcode.com/u/_Prajjwal_39_/" target="_blank" rel="noreferrer">View live LeetCode profile <span>↗</span></a>
@@ -199,7 +181,7 @@ export function Portfolio() {
             </div>
           </article>
           <article className="leetcode-panel topic-panel">
-            <div className="leetcode-panel-heading"><div><span>03 / TOPIC STRENGTHS</span><h3>Areas I’ve practised most</h3></div><span className="leetcode-panel-icon">✳</span></div>
+            <div className="leetcode-panel-heading"><div><span>03 / TOPIC STRENGTHS</span><h3>Areas I’ve practised most</h3></div><span className="leetcode-panel-icon"></span></div>
             <p className="leetcode-panel-copy">Topic counts can overlap because a problem may have more than one tag.</p>
             <div className="topic-achievement-list">
               <div><span>Array</span><div className="topic-track"><i style={{ width: '100%' }} /></div><strong>599</strong></div>
@@ -230,8 +212,8 @@ export function Portfolio() {
       </section>
 
       <section className="work-section" id="work">
-        <div className="section-kicker"><span>03 / SELECTED WORK</span><span className="kicker-rule" /><span className="section-side-note">EARLY BUILDS, REAL LEARNING</span></div>
-        <div className="work-heading"><h2>Selected work.<br /><em>One place.</em></h2><p>Three selected projects across applied AI, web development, and smart-contract experimentation. Explore each project’s available demo or source repository.</p></div>
+        <div className="section-kicker"><span>Selected projects</span><span className="kicker-rule" /><span className="section-side-note">EARLY BUILDS, REAL LEARNING</span></div>
+        <div className="work-heading"><h2>Selected projects</h2><p>Three selected projects across applied AI, web development, and smart-contract experimentation. Explore each project’s available demo or source repository.</p></div>
         <div className="project-filters" role="group" aria-label="Filter projects">
           <button type="button" className={activeFilter === 'all' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('all')} aria-pressed={activeFilter === 'all'}>Selected projects <span>03</span></button>
           <button type="button" className={activeFilter === 'ai' ? 'filter-chip filter-active' : 'filter-chip'} onClick={() => setActiveFilter('ai')} aria-pressed={activeFilter === 'ai'}>AI & support <span>01</span></button>
@@ -271,12 +253,12 @@ export function Portfolio() {
       </section>
 
       <section className="toolkit-section" id="toolkit">
-        <div className="section-kicker"><span>04 / MY TOOLKIT</span><span className="kicker-rule" /><span className="section-side-note">LEARNING BY BUILDING</span></div>
-        <div className="toolkit-heading"><h2>Core skills.<br /><em>Focused next steps.</em></h2><p>Java is my main language for LeetCode, with 1,023 problems solved. I’m building my Python foundation and learning toward junior GenAI, AI/ML, and data science work.</p></div>
+        <div className="section-kicker"><span>Skills and tools</span><span className="kicker-rule" /><span className="section-side-note">LEARNING BY BUILDING</span></div>
+        <div className="toolkit-heading"><h2>Skills and learning</h2><p>Java is my main language for LeetCode, with 1,023 problems solved. I’m building my Python foundation and learning toward junior GenAI, AI/ML, and data science work.</p></div>
         <div className="toolkit-grid">
           <div className="toolkit-card"><span className="tool-number">01</span><div className="tool-icon api-icon">J</div><h3>Java & problem solving</h3><p>My main LeetCode language, backed by consistent practice with algorithmic problems.</p><div className="tool-tags"><span>Java</span><span>DSA practice</span><span>LeetCode</span></div></div>
           <div className="toolkit-card"><span className="tool-number">02</span><div className="tool-icon python-icon">Py</div><h3>Python foundations</h3><p>Developing programming, scripting, and data-handling fundamentals for AI-focused work.</p><div className="tool-tags"><span>Python</span><span>JSON</span><span>Data basics</span></div></div>
-          <div className="toolkit-card"><span className="tool-number">03</span><div className="tool-icon ai-icon">✳</div><h3>GenAI & AI/ML learning</h3><p>Exploring LLM and retrieval concepts while building toward practical AI/ML projects.</p><div className="tool-tags"><span>LLM concepts</span><span>RAG concepts</span><span>ML foundations</span></div></div>
+          <div className="toolkit-card"><span className="tool-number">03</span><div className="tool-icon ai-icon">AI</div><h3>GenAI & AI/ML learning</h3><p>Exploring LLM and retrieval concepts while building toward practical AI/ML projects.</p><div className="tool-tags"><span>LLM concepts</span><span>RAG concepts</span><span>ML foundations</span></div></div>
           <div className="toolkit-card"><span className="tool-number">04</span><div className="tool-icon git-icon">▦</div><h3>Data science foundations</h3><p>Practising database queries and data manipulation through structured problem solving.</p><div className="tool-tags"><span>MySQL</span><span>Pandas</span><span>Data basics</span></div></div>
         </div>
       </section>
@@ -285,7 +267,7 @@ export function Portfolio() {
       {selectedProject && (
         <div className="case-overlay" onClick={() => setSelectedProject(null)}>
           <section className="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-modal-title" tabIndex={-1} onClick={(event) => event.stopPropagation()}>
-            <div className="case-modal-top"><span className="case-overline">CASE FILE / {selectedProject.number} · {selectedProject.status}</span><button type="button" className="case-close" aria-label="Close case study" onClick={() => setSelectedProject(null)}>×</button></div>
+            <div className="case-modal-top"><span className="case-overline">Project details</span><button type="button" className="case-close" aria-label="Close case study" onClick={() => setSelectedProject(null)}>×</button></div>
             <div className="case-modal-body">
               <span className="case-category">{selectedProject.type}</span>
               <h2 id="case-modal-title">{selectedProject.title}<span>.</span></h2>
@@ -313,10 +295,10 @@ export function Portfolio() {
       )}
 
       <section className="contact-section" id="contact">
-        <div className="contact-orbit"><div className="contact-orbit-ring" /><div className="contact-orbit-core">P<span>.</span></div><span className="contact-star">✳</span></div>
-        <div className="contact-copy"><div className="section-kicker"><span>05 / LET’S CONNECT</span></div><h2>Ready to build<br /><em>and keep learning.</em></h2><p>I’m looking for junior GenAI opportunities with a Python focus, and entry-level work connected to AI/ML and data science. Java is my main language for LeetCode, and I’m continuing to strengthen my Python foundations.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
+        <div className="contact-orbit"><div className="contact-orbit-ring" /><div className="contact-orbit-core">P<span>.</span></div></div>
+        <div className="contact-copy"><div className="section-kicker"><span>Contact</span></div><h2>Get in touch</h2><p>I’m looking for junior GenAI opportunities with a Python focus, and entry-level work connected to AI/ML and data science. Java is my main language for LeetCode, and I’m continuing to strengthen my Python foundations.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
       </section>
-      <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>BUILT THROUGH PRACTICE.</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
+      <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>PORTFOLIO · 2026</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
     </main>
   )
 }
