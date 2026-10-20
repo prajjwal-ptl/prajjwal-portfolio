@@ -111,6 +111,14 @@ jobs:
               await page.getByText('CarePilot — Customer Support Retrieval Demo', { exact: true }).waitFor({ timeout: 5000 })
               await page.getByText('GitHub Portfolio Website', { exact: true }).waitFor({ timeout: 5000 })
               if (await page.getByText('LeetCode 75', { exact: true }).count() === 0) throw new Error('LeetCode 75 badge data is missing from the rendered page')
+              const portrait = await page.locator('img.hero-portrait').evaluate((img) => ({
+                complete: img.complete,
+                naturalWidth: img.naturalWidth,
+                src: img.currentSrc,
+              }))
+              if (!portrait.complete || portrait.naturalWidth < 500) {
+                throw new Error(`Profile portrait did not load correctly: ${JSON.stringify(portrait)}`)
+              }
             } catch (error) {
               const rootText = await page.locator('#root').innerText().catch(() => '<no #root element>')
               throw new Error(

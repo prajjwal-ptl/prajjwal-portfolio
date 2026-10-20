@@ -371,7 +371,7 @@ export function Portfolio() {
         </div>
 
         <figure className="hero-portrait-wrap">
-          <img className="hero-portrait" src="/prajjwal-portfolio/macaly-3d-portfolio/prajjwal-portrait.webp" alt="Portrait of Prajjwal Patel" />
+          <img className="hero-portrait" src="/prajjwal-portfolio/macaly-3d-portfolio/prajjwal-portrait.webp?v=d13c390" alt="Portrait of Prajjwal Patel" />
           <figcaption>Prajjwal Patel · 2026 Computer Science graduate</figcaption>
         </figure>
         <div className="hero-bottomline"><a href="#work">SCROLL TO EXPLORE ↓</a></div>
