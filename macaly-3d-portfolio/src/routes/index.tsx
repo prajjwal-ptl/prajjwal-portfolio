@@ -52,7 +52,7 @@ const projects = [
     repoUrl: 'https://github.com/prajjwal-ptl/blockchain',
     statusNote: 'Only the public source repository is linked; this card does not claim the contract is audited, production-ready, or suitable for real-value betting.',
   },
-]] as const
+] as const
 
 export function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
