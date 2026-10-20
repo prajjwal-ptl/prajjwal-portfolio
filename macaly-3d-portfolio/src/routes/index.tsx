@@ -564,9 +564,9 @@ export function Portfolio() {
 
       <section className="hero-section" id="home">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="status-dot" /> TARGETING JUNIOR GENAI · PYTHON · AI / ML ROLES <span className="eyebrow-line" /></div>
+          <div className="eyebrow"><span className="status-dot" /> TARGET ROLE · JUNIOR GENAI / PYTHON · AI/ML & DATA SCIENCE <span className="eyebrow-line" /></div>
           <h1>Junior GenAI<br />developer with <em>Python</em><span className="title-period">.</span></h1>
-          <p className="hero-lede">I’m Prajjwal, a 2026 B.Tech CSE graduate building toward GenAI, AI/ML, and data science roles, with Java as my main problem-solving language on LeetCode.</p>
+          <p className="hero-lede">I’m Prajjwal, a 2026 B.Tech CSE graduate targeting junior GenAI and Python roles, with interests in AI/ML and data science. Java is my main language for LeetCode.</p>
           <div className="hero-actions">
             <a className="button-primary" href="#work">Explore my work <span>↘</span></a>
             <a className="button-text" href="#about">A little about me <span>↗</span></a>
@@ -574,7 +574,7 @@ export function Portfolio() {
           <div className="hero-meta">
             <div><span className="meta-label">BASE</span><strong>Bengaluru, India <i>↗</i></strong></div>
             <div><span className="meta-label">BACKGROUND</span><strong>B.Tech CSE · 2026</strong></div>
-            <div><span className="meta-label">TARGET ROLE</span><strong>Junior GenAI · Python · AI/ML</strong></div>
+            <div><span className="meta-label">TARGET ROLE</span><strong>Junior GenAI · Python · AI/ML · Data Science</strong></div>
           </div>
         </div>
 
@@ -735,7 +735,7 @@ export function Portfolio() {
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
                 <div className="project-tags">{project.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
-                <div className="project-actions">{project.demoUrl && <a className="project-action project-action-primary" href={project.demoUrl} target="_blank" rel="noreferrer">{project.title === 'Digital Growth Portfolio Website' || project.title === 'GitHub Portfolio Website' ? 'Open portfolio site' : 'Open live demo'} <span>↗</span></a>}{project.repoUrl && <a className="project-action" href={project.repoUrl} target="_blank" rel="noreferrer">View GitHub source <span>↗</span></a>}</div><button type="button" className="project-link" onClick={() => setSelectedProject(project)}>Read case study details <span>↗</span></button>
+                <div className="project-actions">{project.demoUrl && <a className="project-action project-action-primary" href={project.demoUrl} target="_blank" rel="noreferrer">{project.title === 'GitHub Portfolio Website' ? 'Open portfolio site' : 'Open live demo'} <span>↗</span></a>}{project.repoUrl && <a className="project-action" href={project.repoUrl} target="_blank" rel="noreferrer">View GitHub source <span>↗</span></a>}</div><button type="button" className="project-link" onClick={() => setSelectedProject(project)}>Read case study details <span>↗</span></button>
               </div>
             </article>
           ))}
@@ -746,7 +746,7 @@ export function Portfolio() {
 
       <section className="toolkit-section" id="toolkit">
         <div className="section-kicker"><span>04 / MY TOOLKIT</span><span className="kicker-rule" /><span className="section-side-note">LEARNING BY BUILDING</span></div>
-        <div className="toolkit-heading"><h2>Core skills.<br /><em>Focused next steps.</em></h2><p>Java is my strongest documented language through LeetCode practice. I’m building my Python foundation and learning toward GenAI, AI/ML, and data science roles.</p></div>
+        <div className="toolkit-heading"><h2>Core skills.<br /><em>Focused next steps.</em></h2><p>Java is my main language for LeetCode, with 1,023 problems solved. I’m building my Python foundation and learning toward junior GenAI, AI/ML, and data science work.</p></div>
         <div className="toolkit-grid">
           <div className="toolkit-card"><span className="tool-number">01</span><div className="tool-icon api-icon">J</div><h3>Java & problem solving</h3><p>My main LeetCode language, backed by consistent practice with algorithmic problems.</p><div className="tool-tags"><span>Java</span><span>DSA practice</span><span>LeetCode</span></div></div>
           <div className="toolkit-card"><span className="tool-number">02</span><div className="tool-icon python-icon">Py</div><h3>Python foundations</h3><p>Developing programming, scripting, and data-handling fundamentals for AI-focused work.</p><div className="tool-tags"><span>Python</span><span>JSON</span><span>Data basics</span></div></div>
@@ -772,7 +772,7 @@ export function Portfolio() {
                 <article><span>04 / NEXT MILESTONE</span><h3>The next practical step</h3><p>{selectedProject.next}</p></article>
               </div>
               <div className="case-reality"><span className="case-reality-mark">i</span><p><strong>Project access & status:</strong> {selectedProject.statusNote}</p></div>
-              <div className="case-actions"><button type="button" className="case-secondary" onClick={() => setSelectedProject(null)}>Close details</button>{selectedProject.demoUrl && <a className="button-primary" href={selectedProject.demoUrl} target="_blank" rel="noreferrer">{selectedProject.title === 'Digital Growth Portfolio Website' || selectedProject.title === 'GitHub Portfolio Website' ? 'Open portfolio site' : 'Open live demo'} <span>↗</span></a>}{selectedProject.repoUrl && <a className="button-outline" href={selectedProject.repoUrl} target="_blank" rel="noreferrer">View GitHub source ↗</a>}</div>
+              <div className="case-actions"><button type="button" className="case-secondary" onClick={() => setSelectedProject(null)}>Close details</button>{selectedProject.demoUrl && <a className="button-primary" href={selectedProject.demoUrl} target="_blank" rel="noreferrer">{selectedProject.title === 'GitHub Portfolio Website' ? 'Open portfolio site' : 'Open live demo'} <span>↗</span></a>}{selectedProject.repoUrl && <a className="button-outline" href={selectedProject.repoUrl} target="_blank" rel="noreferrer">View GitHub source ↗</a>}</div>
             </div>
           </section>
         </div>
@@ -780,7 +780,7 @@ export function Portfolio() {
 
       <section className="contact-section" id="contact">
         <div className="contact-orbit"><div className="contact-orbit-ring" /><div className="contact-orbit-core">P<span>.</span></div><span className="contact-star">✳</span></div>
-        <div className="contact-copy"><div className="section-kicker"><span>05 / LET’S CONNECT</span></div><h2>Ready to build<br /><em>and keep learning.</em></h2><p>I’m seeking junior GenAI and Python-focused opportunities, with an interest in AI/ML and data science. I bring a strong Java problem-solving foundation and am continuing to build my Python and applied-AI skills.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
+        <div className="contact-copy"><div className="section-kicker"><span>05 / LET’S CONNECT</span></div><h2>Ready to build<br /><em>and keep learning.</em></h2><p>I’m looking for junior GenAI opportunities with a Python focus, and entry-level work connected to AI/ML and data science. Java is my main language for LeetCode, and I’m continuing to strengthen my Python foundations.</p><div className="contact-actions"><a className="button-primary" href="mailto:patelprajjwal7@gmail.com">Email me <span>↗</span></a><a className="button-outline" href="https://github.com/prajjwal-ptl" target="_blank" rel="noreferrer">GitHub profile ↗</a><a className="button-outline" href="https://www.linkedin.com/in/prajjwalpatel/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a className="button-outline" href="https://prajjwal-ptl.github.io/prajjwal-portfolio/macaly-3d-portfolio/resume.pdf" download="Prajjwal_Patel_Resume.pdf">Download résumé ↓</a></div></div>
       </section>
       <footer className="footer"><a href="#home" className="footer-brand">P<span>.</span> PRAJJWAL PATEL</a><span>BUILT THROUGH PRACTICE.</span><a href="#home">BACK TO TOP ↑</a><span>© 2026</span></footer>
     </main>
