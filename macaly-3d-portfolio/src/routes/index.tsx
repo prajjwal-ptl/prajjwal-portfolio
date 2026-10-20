@@ -139,7 +139,7 @@ export function Portfolio() {
           <div><span className="workflow-kicker">HOW I WORK</span><h2 id="workflow-title">How I work on a project</h2></div>
         </div>
         <div className="workflow-description">
-          <p>I start by writing down what the project should do and checking the code, data, and tools I already have.</p>
+          <p>I write down the goal, then check the code, data, and tools I have.</p>
           <p>I build a small working version, test the main paths and unclear cases, and fix the problems I find.</p>
           <p>I also note what the demo can and cannot do, so I describe its limits clearly.</p>
         </div>
