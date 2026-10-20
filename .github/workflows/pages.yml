@@ -65,6 +65,9 @@ jobs:
             macaly-3d-portfolio/.output-pages/index.html > .pages-site/portfolio.html
           test -s .pages-site/portfolio.html
           grep -q '/prajjwal-portfolio/macaly-3d-portfolio/assets/' .pages-site/portfolio.html
+          # The repository's direct Pages URL should open the redesigned portfolio.
+          cp .pages-site/portfolio.html .pages-site/index.html
+          grep -q '<title>Prajjwal Patel' .pages-site/index.html
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -80,10 +83,20 @@ jobs:
         run: |
           set -euo pipefail
           base="https://prajjwal-ptl.github.io/prajjwal-portfolio"
-          for path in "/portfolio.html" "/macaly-3d-portfolio/" "/macaly-3d-portfolio/prajjwal-portrait.webp"; do
+          for path in "/" "/portfolio.html" "/macaly-3d-portfolio/" "/macaly-3d-portfolio/prajjwal-portrait.webp"; do
             code="$(curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -sS -o /tmp/pages-check -w '%{http_code}' "$base$path")"
             echo "$base$path -> HTTP $code"
             test "$code" = "200"
           done
-          curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -fsS "$base/portfolio.html" -o /tmp/portfolio.html
+          curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -fsS "$base/" -o /tmp/portfolio.html
           grep -q '<title>Prajjwal Patel' /tmp/portfolio.html
+          js_path="$(grep -oE 'src="[^"]+\.js"' /tmp/portfolio.html | head -1 | sed -E 's/^src="([^"]+)".*/\1/')"
+          css_path="$(grep -oE 'href="[^"]+\.css"' /tmp/portfolio.html | head -1 | sed -E 's/^href="([^"]+)".*/\1/')"
+          test -n "$js_path"
+          test -n "$css_path"
+          for path in "$js_path" "$css_path" "/prajjwal-portfolio/macaly-3d-portfolio/prajjwal-portrait.webp"; do
+            code="$(curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -sS -o /tmp/pages-asset -w '%{http_code}' "$base$path")"
+            echo "$base$path -> HTTP $code"
+            test "$code" = "200"
+            test -s /tmp/pages-asset
+          done
