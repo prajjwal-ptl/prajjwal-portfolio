@@ -54,6 +54,267 @@ const projects = [
   },
 ] as const
 
+const leetcodeBadges = [
+  {
+    "name": "500 Days Badge",
+    "date": "3 Nov 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/marketing/lg500.png"
+  },
+  {
+    "name": "365 Days Badge",
+    "date": "16 Jun 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/marketing/lg365.png"
+  },
+  {
+    "name": "200 Days Badge 2026",
+    "date": "1 Aug 2026",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/200_1080_1080.png"
+  },
+  {
+    "name": "100 Days Badge 2026",
+    "date": "16 Apr 2026",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/100_1080_1080.png"
+  },
+  {
+    "name": "50 Days Badge 2026",
+    "date": "22 Feb 2026",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/50_1080_1080.png"
+  },
+  {
+    "name": "Annual Badge 2025",
+    "date": "10 Nov 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/2025_lg.png"
+  },
+  {
+    "name": "200 Days Badge 2025",
+    "date": "29 Jul 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/lg200.png"
+  },
+  {
+    "name": "100 Days Badge 2025",
+    "date": "14 Apr 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/lg25100.png"
+  },
+  {
+    "name": "50 Days Badge 2025",
+    "date": "20 Feb 2025",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/others/lg2550.png"
+  },
+  {
+    "name": "200 Days Badge 2024",
+    "date": "24 Dec 2024",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-200-lg.png"
+  },
+  {
+    "name": "100 Days Badge 2024",
+    "date": "9 Sep 2024",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-100-lg.png"
+  },
+  {
+    "name": "50 Days Badge 2024",
+    "date": "20 Jul 2024",
+    "group": "consistency",
+    "icon": "https://assets.leetcode.com/static_assets/marketing/2024-50-lg.png"
+  },
+  {
+    "name": "Sep LeetCoding Challenge 2026",
+    "date": "30 Sep 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-9.png"
+  },
+  {
+    "name": "Aug LeetCoding Challenge 2026",
+    "date": "31 Aug 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-8.png"
+  },
+  {
+    "name": "Jul LeetCoding Challenge 2026",
+    "date": "31 Jul 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-7.png"
+  },
+  {
+    "name": "Jun LeetCoding Challenge 2026",
+    "date": "30 Jun 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-6.png"
+  },
+  {
+    "name": "May LeetCoding Challenge 2026",
+    "date": "5 Jun 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-5.png"
+  },
+  {
+    "name": "Apr LeetCoding Challenge 2026",
+    "date": "30 Apr 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-4.png"
+  },
+  {
+    "name": "Mar LeetCoding Challenge 2026",
+    "date": "31 Mar 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-3.png"
+  },
+  {
+    "name": "Feb LeetCoding Challenge 2026",
+    "date": "28 Feb 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-2.png"
+  },
+  {
+    "name": "Jan LeetCoding Challenge 2026",
+    "date": "31 Jan 2026",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2026-1.png"
+  },
+  {
+    "name": "Dec LeetCoding Challenge 2025",
+    "date": "31 Dec 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-12.png"
+  },
+  {
+    "name": "Nov LeetCoding Challenge 2025",
+    "date": "30 Nov 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-11.png"
+  },
+  {
+    "name": "Oct LeetCoding Challenge 2025",
+    "date": "31 Oct 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-10.png"
+  },
+  {
+    "name": "Sep LeetCoding Challenge 2025",
+    "date": "30 Sep 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-9.png"
+  },
+  {
+    "name": "Aug LeetCoding Challenge 2025",
+    "date": "31 Aug 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-8.png"
+  },
+  {
+    "name": "Jul LeetCoding Challenge 2025",
+    "date": "31 Jul 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-7.png"
+  },
+  {
+    "name": "Jun LeetCoding Challenge 2025",
+    "date": "30 Jun 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-6.png"
+  },
+  {
+    "name": "May LeetCoding Challenge 2025",
+    "date": "1 Jun 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-5.png"
+  },
+  {
+    "name": "Apr LeetCoding Challenge 2025",
+    "date": "30 Apr 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-4.png"
+  },
+  {
+    "name": "Mar LeetCoding Challenge 2025",
+    "date": "31 Mar 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-3.png"
+  },
+  {
+    "name": "Feb LeetCoding Challenge 2025",
+    "date": "28 Feb 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-2.png"
+  },
+  {
+    "name": "Jan LeetCoding Challenge 2025",
+    "date": "31 Jan 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2025-1.png"
+  },
+  {
+    "name": "Dec LeetCoding Challenge 2024",
+    "date": "1 Jan 2025",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-12.png"
+  },
+  {
+    "name": "Nov LeetCoding Challenge 2024",
+    "date": "30 Nov 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-11.png"
+  },
+  {
+    "name": "Oct LeetCoding Challenge 2024",
+    "date": "31 Oct 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-10.png"
+  },
+  {
+    "name": "Sep LeetCoding Challenge 2024",
+    "date": "30 Sep 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-9.png"
+  },
+  {
+    "name": "Aug LeetCoding Challenge 2024",
+    "date": "31 Aug 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-8.png"
+  },
+  {
+    "name": "Jul LeetCoding Challenge 2024",
+    "date": "31 Jul 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-7.png"
+  },
+  {
+    "name": "Jun LeetCoding Challenge 2024",
+    "date": "30 Jun 2024",
+    "group": "daily",
+    "icon": "https://leetcode.com/static/images/badges/dcc-2024-6.png"
+  },
+  {
+    "name": "Introduction to Pandas",
+    "date": "9 Sep 2024",
+    "group": "study",
+    "icon": "https://assets.leetcode.com/static_assets/others/Introduction_to_Pandas_Badge.png"
+  },
+  {
+    "name": "Top SQL 50",
+    "date": "8 Sep 2024",
+    "group": "study",
+    "icon": "https://assets.leetcode.com/static_assets/others/Top_SQL_50.png"
+  },
+  {
+    "name": "LeetCode 75",
+    "date": "5 Sep 2024",
+    "group": "study",
+    "icon": "https://assets.leetcode.com/static_assets/others/LeetCode_75.png"
+  }
+] as const
+
 export function Portfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeProject, setActiveProject] = useState(0)
