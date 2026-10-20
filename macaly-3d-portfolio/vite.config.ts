@@ -1,5 +1,4 @@
-// IMPORTANT (Macaly agent): This config retains Macaly's preview behavior while
-// enabling a static GitHub Pages build for the public portfolio URL.
+// Keep Macaly preview behavior and add a GitHub Pages static build.
 import { defineConfig } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -34,7 +33,6 @@ const config = defineConfig({
   }),
   plugins: [
     devtools({ injectSource: { enabled: false } }),
-    // Macaly Tagger is crucial for proper functionality of Visual Edits in Macaly
     !!process.env.DEV_BUILD && macalyTagger({
       ignorePackages: [
         '@react-three/fiber',
@@ -50,15 +48,22 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: {
-        // Macaly previews keep their historical setting; GitHub Pages needs static HTML.
+        // With a non-root Vite base, the prerender URL needs the same prefix.
         enabled: !!process.env.DEV_BUILD || isGitHubPagesBuild,
         autoSubfolderIndex: true,
-        autoStaticPathsDiscovery: true,
-        crawlLinks: isGitHubPagesBuild,
+        autoStaticPathsDiscovery: !isGitHubPagesBuild,
+        crawlLinks: false,
         failOnError: true,
       },
+      ...(isGitHubPagesBuild ? {
+        pages: [
+          {
+            path: githubPagesBase,
+            prerender: { enabled: true, outputPath: '/index.html' },
+          },
+        ],
+      } : {}),
     }),
-    // Nitro's github_pages preset produces static output suitable for GitHub Pages.
     nitro(),
     viteReact(),
   ],
