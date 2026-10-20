@@ -11,10 +11,11 @@ const projects = [
     tags: ['Python', 'Streamlit', 'Sentence Transformers', 'ChromaDB', 'RAG'],
     status: 'PUBLIC BROWSER DEMO + SOURCE', visual: 'support',
     previewTag: 'CARE / PILOT · SUPPORT COPILOT', previewTitle: 'Evidence before answers.', previewSymbol: '✳',
-    problem: 'Support agents need relevant policy information quickly without presenting an unsupported answer as certain.',
-    approach: 'The Python source combines FAQ retrieval, a keyword fallback, optional LLM reply drafting, sentiment/category signals, and an escalation flag. The browser demo uses local rules and sample FAQs.',
-    testPlan: 'Check retrieval against expected FAQ IDs, review whether replies are supported by their source, and test unclear, empty, and prompt-injection-style inputs.',
-    next: 'Expand the evaluation set, improve confidence calibration, and keep suggested replies subject to human review.',
+    whatBuilt: 'I built a Python Streamlit support assistant for FAQ retrieval and evidence-linked reply drafts. It uses Sentence Transformers, ChromaDB, a keyword fallback, optional LLM drafting, sentiment/category signals, and an escalation flag. The browser demo uses local rules and sample FAQs.',
+    problemSolved: 'I designed it to help support agents find relevant policy information and see the FAQ evidence behind a reply, rather than treat an unsupported answer as certain.',
+    learned: 'I learned to keep retrieval, reply drafting, and human review separate. The browser demo does not call the Python backend or an LLM API.',
+    improve: 'I’d test retrieval against expected FAQ IDs, include unclear, empty, and prompt-injection-style inputs, and improve confidence calibration before suggesting replies.',
+    screenshotLabel: 'CarePilot demo screenshot',
     demoUrl: 'https://prajjwal-ptl.github.io/prajjwal-portfolio/projects/ai-customer-support-assistant/demo/',
     repoUrl: 'https://github.com/prajjwal-ptl/prajjwal-portfolio/tree/main/projects/ai-customer-support-assistant',
     statusNote: 'The public browser demo uses local rules and a sample FAQ; it does not call the Python backend or an LLM API. The Python app and retrieval engine are separate source files.',
@@ -26,10 +27,11 @@ const projects = [
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive design', 'GitHub Pages'],
     status: 'LIVE · GITHUB PAGES', visual: 'github-site',
     previewTag: 'PERSONAL PORTFOLIO / WEB', previewTitle: 'Work with a clear story.', previewSymbol: '◈',
-    problem: 'A personal website should make work, skills, positioning, and contact information easy to scan.',
-    approach: 'The repository contains separate static pages, a shared stylesheet, JavaScript interactions, and a workflow that deploys the site to GitHub Pages.',
-    testPlan: 'Review responsive navigation, page-to-page links, keyboard focus, and whether concept work is distinguished from shipped work.',
-    next: 'Keep the repository README, live website, and project directory in sync.',
+    whatBuilt: 'I built a multi-page static website with Home, Projects, About, and Contact pages using HTML, CSS, and JavaScript. GitHub Actions deploys it to GitHub Pages.',
+    problemSolved: 'I organized projects, background, and contact details into one public site, with separate pages for visitors to explore.',
+    learned: 'I learned to maintain separate pages with a shared stylesheet and JavaScript interactions.',
+    improve: 'I’d review responsive navigation, page-to-page links, and keyboard focus, and keep the README, deployed site, and project folder in sync.',
+    screenshotLabel: 'GitHub portfolio screenshot',
     demoUrl: 'https://prajjwal-ptl.github.io/prajjwal-portfolio/',
     repoUrl: 'https://github.com/prajjwal-ptl/prajjwal-portfolio',
     statusNote: 'The GitHub Pages website was checked and returned HTTP 200 on 19 October 2026. Its repository also contains the CarePilot browser demo.',
@@ -41,10 +43,11 @@ const projects = [
     tags: ['Rust', 'Stellar Soroban', 'Smart contracts', 'Blockchain'],
     status: 'PUBLIC GITHUB REPOSITORY', visual: 'blockchain',
     previewTag: 'STELLAR / SOROBAN', previewTitle: 'Code you can inspect.', previewSymbol: '◇',
-    problem: 'Smart contracts need transparent, reviewable state transitions and careful handling of randomness and payouts.',
-    approach: 'The repository includes a Soroban workspace and documents a dice-game contract concept. The README notes that its random-number generation needs improvement.',
-    testPlan: 'Review the contract code and tests, examine authorization and payout logic, and replace weak randomness before any real-value use.',
-    next: 'Improve randomness and security, expand test coverage, and document contract behavior and tests.',
+    whatBuilt: 'I worked on a Rust smart-contract workspace using Stellar Soroban for a documented dice-game contract concept.',
+    problemSolved: 'I documented the dice-game concept and identified that its random-number generation still needs improvement. I have not claimed this issue is fixed or that the contract is production-ready.',
+    learned: 'I learned that randomness, authorization, and payout logic need careful review before a smart contract is used with real value.',
+    improve: 'I’d improve randomness, review authorization and payout handling, expand tests, and document contract behavior.',
+    screenshotLabel: 'Soroban dice game contract screenshot',
     demoUrl: '',
     repoUrl: 'https://github.com/prajjwal-ptl/blockchain',
     statusNote: 'Only the public source repository is linked; this card does not claim the contract is audited, production-ready, or suitable for real-value betting.',
@@ -292,11 +295,19 @@ export function Portfolio() {
               <h2 id="case-modal-title">{selectedProject.title}<span>.</span></h2>
               <p className="case-lede">{selectedProject.description}</p>
               <div className="project-tags case-tags">{selectedProject.tags.map(tag => <span key={tag}>{tag}</span>)}</div>
+              <figure className="case-screenshot-slot">
+                <div className="case-screenshot-frame" role="img" aria-label={`Screenshot placeholder for ${selectedProject.title}`}>
+                  <span className="case-screenshot-icon" aria-hidden="true">▧</span>
+                  <strong>{selectedProject.screenshotLabel}</strong>
+                  <span className="case-screenshot-prompt">Screenshot to be added</span>
+                </div>
+                <figcaption>Project screenshot</figcaption>
+              </figure>
               <div className="case-grid">
-                <article><span>01 / THE PROBLEM</span><h3>Why this work matters</h3><p>{selectedProject.problem}</p></article>
-                <article><span>02 / THE APPROACH</span><h3>Designed around the user</h3><p>{selectedProject.approach}</p></article>
-                <article><span>03 / WHAT TO TEST</span><h3>Verify before sharing</h3><p>{selectedProject.testPlan}</p></article>
-                <article><span>04 / NEXT MILESTONE</span><h3>The next practical step</h3><p>{selectedProject.next}</p></article>
+                <article><span>01 / WHAT I BUILT</span><h3>What I built</h3><p>{selectedProject.whatBuilt}</p></article>
+                <article><span>02 / A PROBLEM I SOLVED</span><h3>A problem I solved</h3><p>{selectedProject.problemSolved}</p></article>
+                <article><span>03 / WHAT I LEARNED</span><h3>What I learned</h3><p>{selectedProject.learned}</p></article>
+                <article><span>04 / WHAT I’D IMPROVE</span><h3>What I’d improve</h3><p>{selectedProject.improve}</p></article>
               </div>
               <div className="case-reality"><span className="case-reality-mark">i</span><p><strong>Project access & status:</strong> {selectedProject.statusNote}</p></div>
               <div className="case-actions"><button type="button" className="case-secondary" onClick={() => setSelectedProject(null)}>Close details</button>{selectedProject.demoUrl && <a className="button-primary" href={selectedProject.demoUrl} target="_blank" rel="noreferrer">{selectedProject.title === 'GitHub Portfolio Website' ? 'Open portfolio site' : 'Open live demo'} <span>↗</span></a>}{selectedProject.repoUrl && <a className="button-outline" href={selectedProject.repoUrl} target="_blank" rel="noreferrer">View GitHub source ↗</a>}</div>
