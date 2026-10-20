@@ -94,9 +94,15 @@ jobs:
           css_path="$(grep -oE 'href="[^"]+\.css"' /tmp/portfolio.html | head -1 | sed -E 's/^href="([^"]+)".*/\1/')"
           test -n "$js_path"
           test -n "$css_path"
+          origin="https://prajjwal-ptl.github.io"
           for path in "$js_path" "$css_path" "/prajjwal-portfolio/macaly-3d-portfolio/prajjwal-portrait.webp"; do
-            code="$(curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -sS -o /tmp/pages-asset -w '%{http_code}' "$base$path")"
-            echo "$base$path -> HTTP $code"
+            code="$(curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -sS -D /tmp/pages-headers -o /tmp/pages-asset -w '%{http_code}' "$origin$path")"
+            echo "$origin$path -> HTTP $code"
             test "$code" = "200"
             test -s /tmp/pages-asset
+            case "$path" in
+              *.js) grep -Eqi "^content-type: (application|text)/javascript" /tmp/pages-headers ;;
+              *.css) grep -Eqi "^content-type: text/css" /tmp/pages-headers ;;
+              *.webp) grep -Eqi "^content-type: image/webp" /tmp/pages-headers ;;
+            esac
           done
