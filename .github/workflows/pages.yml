@@ -83,10 +83,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          npm install --no-save --package-lock=false playwright
+          mkdir -p /tmp/portfolio-browser-check
+          cd /tmp/portfolio-browser-check
+          npm init -y
+          npm install playwright
           npx playwright install chromium
+          cd "$GITHUB_WORKSPACE/macaly-3d-portfolio"
           node --input-type=module <<'NODE'
-          import { chromium } from 'playwright'
+          import { chromium } from '/tmp/portfolio-browser-check/node_modules/playwright/index.mjs'
 
           const browser = await chromium.launch({ headless: true })
           const page = await browser.newPage()
