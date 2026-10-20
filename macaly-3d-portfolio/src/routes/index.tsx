@@ -96,9 +96,9 @@ export function Portfolio() {
 
       <section className="hero-section" id="home">
         <div className="hero-copy">
-          <div className="eyebrow"><span className="status-dot" /> TARGET ROLE · JUNIOR GENAI / PYTHON · AI/ML & DATA SCIENCE <span className="eyebrow-line" /></div>
-          <h1>Junior GenAI<br />developer with <em>Python</em><span className="title-period">.</span></h1>
-          <p className="hero-lede">I’m Prajjwal, a 2026 B.Tech CSE graduate targeting junior GenAI and Python roles, with interests in AI/ML and data science. Java is my main language for LeetCode.</p>
+          <div className="eyebrow"><span className="status-dot" /> I’M TARGETING JUNIOR GENAI / PYTHON ROLES <span className="eyebrow-line" /></div>
+          <h1>I’m aiming for<br />junior GenAI <em>roles</em><span className="title-period">.</span></h1>
+          <p className="hero-lede">I graduated in 2026 with a B.Tech in Computer Science. I’m targeting Python-focused GenAI roles and learning toward AI/ML and data science. I use Java for most of my LeetCode work.</p>
           <div className="hero-actions">
             <a className="button-primary" href="#work">Explore my work <span>↘</span></a>
             <a className="button-text" href="#about">A little about me <span>↗</span></a>
@@ -131,22 +131,17 @@ export function Portfolio() {
           <div className="stage-caption"><span>FIG. 01</span><span>IDEAS → WORKING SOFTWARE</span></div>
           <div className="stage-cross cross-one">+</div><div className="stage-cross cross-two">+</div>
         </div>
-        <div className="hero-bottomline"><span>CURIOUS BY DEFAULT. PRACTICAL BY DESIGN.</span><a href="#work">SCROLL TO EXPLORE ↓</a></div>
+        <div className="hero-bottomline"><a href="#work">SCROLL TO EXPLORE ↓</a></div>
       </section>
 
       <section className="workflow-strip" aria-labelledby="workflow-title">
         <div className="workflow-head">
-          <div><span className="workflow-kicker">THE BUILD LOOP / 04 STEPS</span><h2 id="workflow-title">How I turn a problem into <em>working software.</em></h2></div>
-          <span className="workflow-side">CLARITY → CODE → CONFIDENCE</span>
+          <div><span className="workflow-kicker">HOW I WORK</span><h2 id="workflow-title">How I work on a project</h2></div>
         </div>
-        <div className="workflow-steps">
-          <article className="workflow-step"><span className="workflow-index">01</span><span className="workflow-icon">⌕</span><h3>Understand</h3><p>Define the real problem, the user, and a useful outcome.</p></article>
-          <span className="workflow-arrow" aria-hidden="true">↗</span>
-          <article className="workflow-step"><span className="workflow-index">02</span><span className="workflow-icon">{'{ }'}</span><h3>Plan</h3><p>Break the solution into small, testable tasks.</p></article>
-          <span className="workflow-arrow" aria-hidden="true">↗</span>
-          <article className="workflow-step"><span className="workflow-index">03</span><span className="workflow-icon">⌘</span><h3>Build</h3><p>Write readable code and connect only what is needed.</p></article>
-          <span className="workflow-arrow" aria-hidden="true">↗</span>
-          <article className="workflow-step"><span className="workflow-index">04</span><span className="workflow-icon">✓</span><h3>Validate</h3><p>Test edge cases, document limits, and improve with feedback.</p></article>
+        <div className="workflow-description">
+          <p>I start by writing down what the project should do and checking the code, data, and tools I already have.</p>
+          <p>I build a small working version, test the main paths and unclear cases, and fix the problems I find.</p>
+          <p>I also note what the demo can and cannot do, so I describe its limits clearly.</p>
         </div>
       </section>
 
@@ -158,12 +153,13 @@ export function Portfolio() {
       </section>
 
       <section className="manifesto" id="about">
-        <div className="section-kicker"><span>01 / THE PERSON BEHIND THE PROJECTS</span><span className="kicker-rule" /></div>
+        <div className="section-kicker"><span>01 / ABOUT ME</span><span className="kicker-rule" /></div>
         <div className="manifesto-grid">
-          <h2>Technology should<br />make things feel<br /><em>less complicated.</em></h2>
+          <h2>About me</h2>
           <div className="manifesto-copy">
-            <p>I’m a 2026 Computer Science graduate from Oriental College of Technology, Bhopal. I enjoy breaking down problems, understanding what people actually need, and turning that understanding into useful digital tools.</p>
-            <p>My interest in customer-support workflows has led me toward applied AI: tools that can find the right information, assist with repetitive tasks, and keep people in control when a situation needs human judgement.</p>
+            <p>I studied Computer Science at Oriental College of Technology in Bhopal and graduated in 2026.</p>
+            <p>I enjoy breaking problems into smaller parts and working out how a tool should behave.</p>
+            <p>I care about making information easy to check, especially when software suggests an answer. CarePilot reflects that interest through FAQ evidence and human review.</p>
             <div className="education-stamp"><span className="stamp-icon">✳</span><span><small>EDUCATION</small><strong>B.Tech · Computer Science Engineering</strong><small>ORIENTAL COLLEGE OF TECHNOLOGY, BHOPAL · CGPA 7.73</small></span></div>
           </div>
         </div>
