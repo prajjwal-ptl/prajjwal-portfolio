@@ -38,7 +38,9 @@ jobs:
         working-directory: macaly-3d-portfolio
         run: |
           npm ci
+          npm run typecheck
           npm test
+          npm run build
           npm run build:pages
           if [ ! -s .output-pages/index.html ] && [ -s .output-pages/github-pages.html ]; then
             cp .output-pages/github-pages.html .output-pages/index.html
@@ -126,10 +128,118 @@ jobs:
               )
             }
 
+            const projectLinks = await page.locator('#work .project-card .project-actions a').evaluateAll((links) =>
+              links.map((link) => ({ href: link.href, rawHref: link.getAttribute('href') })),
+            )
+            if (projectLinks.length !== 5 || projectLinks.some((link) => {
+              try {
+                const url = new URL(link.href)
+                return !link.rawHref || !['https:', 'http:'].includes(url.protocol) || !url.hostname
+              } catch {
+                return true
+              }
+            })) {
+              throw new Error(`Project links are missing or invalid: ${JSON.stringify(projectLinks)}`)
+            }
+            const emailHref = await page.getByRole('link', { name: /Email me/i }).getAttribute('href')
+            if (emailHref !== 'mailto:patelprajjwal7@gmail.com') {
+              throw new Error(`Unexpected contact email href: ${emailHref}`)
+            }
+
+            await page.setViewportSize({ width: 375, height: 812 })
+            await page.reload({ waitUntil: 'domcontentloaded', timeout: 60000 })
+            await page.getByRole('heading', { name: /junior GenAI roles/i }).waitFor({ timeout: 15000 })
+            const mobileAudit = await page.evaluate(() => {
+              const visible = (element) => element.getClientRects().length > 0
+              const paragraphs = Array.from(document.querySelectorAll('.portfolio-shell p')).filter(visible)
+              const labels = Array.from(document.querySelectorAll([
+                '.portfolio-shell small',
+                '.portfolio-shell figcaption',
+                '.portfolio-shell .eyebrow',
+                '.portfolio-shell .section-kicker',
+                '.portfolio-shell .section-side-note',
+                '.portfolio-shell .meta-label',
+                '.portfolio-shell .project-meta',
+                '.portfolio-shell .hero-bottomline',
+                '.portfolio-shell .footer',
+                '.portfolio-shell .contact-note',
+                '.portfolio-shell .workflow-kicker',
+                '.portfolio-shell .leetcode-eyebrow',
+                '.portfolio-shell .project-tags span',
+                '.portfolio-shell .tool-tags span',
+                '.portfolio-shell .art-index',
+                '.portfolio-shell .tool-number',
+                '.portfolio-shell .case-overline',
+                '.portfolio-shell .case-category',
+              ].join(','))).filter(visible)
+              const fontViolations = [
+                ...paragraphs.filter((el) => parseFloat(getComputedStyle(el).fontSize) < 14)
+                  .map((el) => `paragraph ${getComputedStyle(el).fontSize}: ${el.textContent?.trim().slice(0, 40)}`),
+                ...labels.filter((el) => parseFloat(getComputedStyle(el).fontSize) < 12)
+                  .map((el) => `label ${getComputedStyle(el).fontSize}: ${el.textContent?.trim().slice(0, 40)}`),
+              ]
+              const rgb = (color) => {
+                const values = color.match(/[\\d.]+/g)?.map(Number)
+                return values && values.length >= 3
+                  ? { r: values[0], g: values[1], b: values[2], a: values.length > 3 ? values[3] : 1 }
+                  : null
+              }
+              const luminance = (color) => {
+                const linear = [color.r, color.g, color.b].map((value) => {
+                  const channel = value / 255
+                  return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4
+                })
+                return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+              }
+              const ratio = (fg, bg) => {
+                const one = luminance(fg)
+                const two = luminance(bg)
+                return (Math.max(one, two) + 0.05) / (Math.min(one, two) + 0.05)
+              }
+              const contrastNodes = Array.from(document.querySelectorAll([
+                '.portfolio-shell p',
+                '.portfolio-shell small',
+                '.portfolio-shell figcaption',
+                '.portfolio-shell .project-meta',
+                '.portfolio-shell .project-tags span',
+                '.portfolio-shell .tool-tags span',
+                '.portfolio-shell .section-kicker',
+                '.portfolio-shell .meta-label',
+                '.portfolio-shell .hero-bottomline',
+                '.portfolio-shell .footer',
+                '.portfolio-shell .contact-note',
+                '.portfolio-shell .workflow-kicker',
+              ].join(','))).filter(visible)
+              const contrastViolations = []
+              for (const element of contrastNodes) {
+                let bg = null
+                for (let parent = element; parent; parent = parent.parentElement) {
+                  const candidate = rgb(getComputedStyle(parent).backgroundColor)
+                  if (candidate && candidate.a >= 0.99) { bg = candidate; break }
+                }
+                const fg = rgb(getComputedStyle(element).color)
+                if (fg && bg && ratio(fg, bg) < 4.5) {
+                  contrastViolations.push(`contrast ${ratio(fg, bg).toFixed(2)}: ${element.textContent?.trim().slice(0, 40)}`)
+                }
+              }
+              const width = document.documentElement.clientWidth
+              const scrollWidth = document.documentElement.scrollWidth
+              const cards = Array.from(document.querySelectorAll('.project-card')).map((el) => {
+                const rect = el.getBoundingClientRect()
+                return { left: rect.left, right: rect.right, width: rect.width }
+              })
+              return { width, scrollWidth, fontViolations, contrastViolations, cards }
+            })
+            if (mobileAudit.scrollWidth > mobileAudit.width + 1 ||
+                mobileAudit.cards.some((card) => card.left < -1 || card.right > mobileAudit.width + 1) ||
+                mobileAudit.fontViolations.length ||
+                mobileAudit.contrastViolations.length) {
+              throw new Error(`375px mobile accessibility/layout audit failed: ${JSON.stringify(mobileAudit)}`)
+            }
             if (pageErrors.length > 0) {
               throw new Error(`Browser runtime errors: ${pageErrors.join(' | ')}`)
             }
-            console.log('Chromium verified the live hero, selected projects, and LeetCode section rendered.')
+            console.log('Chromium verified links, email, portrait, 375px layout, type sizes, and 4.5:1 text contrast.')
           } finally {
             await browser.close()
           }
