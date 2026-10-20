@@ -23,12 +23,46 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload static site
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: macaly-3d-portfolio/package-lock.json
+
+      - name: Install and build the 3D portfolio
+        working-directory: macaly-3d-portfolio
+        env:
+          GITHUB_PAGES_BUILD: 'true'
+          NITRO_PRESET: github_pages
+        run: |
+          npm ci
+          npm run build
+          test -s .output/public/index.html
+          grep -q "Building useful" .output/public/index.html
+
+      - name: Assemble existing site and 3D portfolio
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .pages-site/macaly-3d-portfolio
+          cp -a .nojekyll index.html about.html contact.html projects.html script.js site.json styles.css projects .pages-site/
+          cp -a macaly-3d-portfolio/.output/public/. .pages-site/macaly-3d-portfolio/
+          touch .pages-site/.nojekyll
+          test -s .pages-site/index.html
+          test -s .pages-site/macaly-3d-portfolio/index.html
+          test -s .pages-site/macaly-3d-portfolio/favicon.svg
+          test -s .pages-site/macaly-3d-portfolio/manifest.json
+
+      - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
-      - name: Deploy
+          path: .pages-site
+
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

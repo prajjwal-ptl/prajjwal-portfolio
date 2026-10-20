@@ -1,7 +1,5 @@
-// IMPORTANT (Macaly agent): Do not change or remove anything in this file unless you 100% understand it.
-// This config wires up Macaly-specific behavior (Visual Edits tagger, allowed hosts, dev build, prerender).
-// Modifying it without full understanding can break Macaly app functionality for the user.
-
+// IMPORTANT (Macaly agent): This config retains Macaly's preview behavior while
+// enabling a static GitHub Pages build for the public portfolio URL.
 import { defineConfig } from 'vite'
 import { devtools } from '@tanstack/devtools-vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -14,7 +12,11 @@ import tailwindcss from '@tailwindcss/vite'
 import errorOverlay from "@visulima/vite-overlay"
 import { macalyTagger } from '@macaly/static-tagger'
 
+const isGitHubPagesBuild = process.env.GITHUB_PAGES_BUILD === 'true'
+const githubPagesBase = '/prajjwal-portfolio/macaly-3d-portfolio/'
+
 const config = defineConfig({
+  base: isGitHubPagesBuild ? githubPagesBase : '/',
   server: {
     allowedHosts: ['.macaly.dev', '.macaly.app', '.macaly-app.com', '.macaly-user-data.dev', '.e2b.app', '.e2b-juliett.dev'],
   },
@@ -48,15 +50,15 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart({
       prerender: {
-        // Keep prerender enabled for DEV_BUILD (preview) otherwise preview will not work!
-        enabled: !!process.env.DEV_BUILD,
+        // Macaly previews keep their historical setting; GitHub Pages needs static HTML.
+        enabled: !!process.env.DEV_BUILD || isGitHubPagesBuild,
         autoSubfolderIndex: true,
         autoStaticPathsDiscovery: true,
-        crawlLinks: false,
+        crawlLinks: isGitHubPagesBuild,
         failOnError: true,
       },
     }),
-    // IMPORTANT: Do not remove nitro() — required for production build. Do NOT create nitro.config.ts; it breaks both production and preview builds.
+    // Nitro's github_pages preset produces static output suitable for GitHub Pages.
     nitro(),
     viteReact(),
   ],

@@ -1,24 +1,13 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { MacalyBridge } from '@macaly/bridge'
 
-// CSS imported as a side effect — do NOT add `?url` or `?inline`.
-//
-// Why: TanStack Start runs two Vite build environments (client + ssr) with
-// independent module graphs. A `?url` import resolves the CSS URL twice and
-// the two passes can produce different hashes; the SSR pass bakes its hash
-// into the prerendered HTML, but only the client's asset actually exists in
-// `dist/client/assets/`, so the stylesheet 404s and the page loads unstyled.
-//
-// A bare side-effect import sidesteps the issue: only the client environment
-// emits the CSS asset, and TanStack Start's manifest collection injects the
-// correct hashed `<link rel="stylesheet">` into the rendered head from the
-// client manifest. The CSS stays a shared, cacheable asset (important if
-// prerender is expanded to multiple static pages — `?inline` would duplicate
-// the CSS into every HTML file).
+// CSS imported as a side effect — do NOT add ?url or ?inline. TanStack Start's
+// client manifest injects the correct hashed stylesheet into prerendered HTML.
 import '../styles.css'
 import siteMetadata from '../metadata.json'
 
 const rootMeta = siteMetadata['/']
+const siteBase = import.meta.env.BASE_URL
 
 export const Route = createRootRoute({
   head: () => ({
@@ -27,10 +16,11 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { title: rootMeta.title },
       { name: 'description', content: rootMeta.description },
+      { name: 'theme-color', content: '#080b1b' },
     ],
     links: [
-      { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-      { rel: 'manifest', href: '/manifest.json' },
+      { rel: 'icon', type: 'image/svg+xml', href: `${siteBase}favicon.svg` },
+      { rel: 'manifest', href: `${siteBase}manifest.json` },
     ],
   }),
   shellComponent: RootDocument,
