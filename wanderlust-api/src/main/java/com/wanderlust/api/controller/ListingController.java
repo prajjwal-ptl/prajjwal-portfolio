@@ -6,7 +6,6 @@ import com.wanderlust.api.dto.ListingUpdateRequest;
 import com.wanderlust.api.dto.PageResponse;
 import com.wanderlust.api.service.ListingService;
 import jakarta.validation.Valid;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +31,7 @@ public class ListingController {
     }
 
     @GetMapping
-    public PageResponse<ListingResponse> searchListings(
+    public ResponseEntity<PageResponse<ListingResponse>> searchListings(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "createdAt") String sortBy,
@@ -41,12 +40,14 @@ public class ListingController {
             @RequestParam(required = false) BigDecimal minPrice,
             @RequestParam(required = false) BigDecimal maxPrice
     ) {
-        return listingService.searchListings(page, size, sortBy, direction, location, minPrice, maxPrice);
+        return ResponseEntity.ok(listingService.searchListings(
+                page, size, sortBy, direction, location, minPrice, maxPrice
+        ));
     }
 
     @GetMapping("/{id}")
-    public ListingResponse getListing(@PathVariable Long id) {
-        return listingService.getListing(id);
+    public ResponseEntity<ListingResponse> getListing(@PathVariable Long id) {
+        return ResponseEntity.ok(listingService.getListing(id));
     }
 
     @PostMapping
@@ -61,11 +62,11 @@ public class ListingController {
     }
 
     @PutMapping("/{id}")
-    public ListingResponse updateListing(
+    public ResponseEntity<ListingResponse> updateListing(
             @PathVariable Long id,
             @Valid @RequestBody ListingUpdateRequest request
     ) {
-        return listingService.updateListing(id, request);
+        return ResponseEntity.ok(listingService.updateListing(id, request));
     }
 
     @DeleteMapping("/{id}")
