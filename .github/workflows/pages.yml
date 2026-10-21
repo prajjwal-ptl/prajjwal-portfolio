@@ -61,6 +61,9 @@ jobs:
           touch .pages-site/.nojekyll
           test -s .pages-site/index.html
           test -s .pages-site/vikash-mandal-java-portfolio/index.html
+          test -s .pages-site/vikash-mandal-java-portfolio/projects/wanderlust/index.html
+          test -s .pages-site/vikash-mandal-java-portfolio/projects/furniture-shop/index.html
+          test -s .pages-site/vikash-mandal-java-portfolio/projects/bookstore/index.html
           test -s .pages-site/macaly-3d-portfolio/index.html
           test -s .pages-site/macaly-3d-portfolio/favicon.svg
           test -s .pages-site/macaly-3d-portfolio/manifest.json
