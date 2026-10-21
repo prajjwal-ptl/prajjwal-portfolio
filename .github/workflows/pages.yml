@@ -56,6 +56,8 @@ jobs:
           cp -a .nojekyll index.html about.html contact.html projects.html script.js site.json styles.css projects .pages-site/
           cp -a macaly-3d-portfolio/.output-pages/. .pages-site/macaly-3d-portfolio/
           cp -a vikash-mandal-java-portfolio .pages-site/
+          mkdir -p .pages-site/vikash-mandal-java-portfolio/projects
+          cp -a vikash-mandal-java-portfolio/projects/. .pages-site/vikash-mandal-java-portfolio/projects/
           touch .pages-site/.nojekyll
           test -s .pages-site/index.html
           test -s .pages-site/vikash-mandal-java-portfolio/index.html
