@@ -1,66 +1,41 @@
 # wanderlust-api
 
-Spring Boot 3 REST API starter for WanderLust. Uses Maven, Java 17, Spring Web, Spring Data JPA, MySQL Connector/J, Validation, Spring Security, and Lombok.
+Spring Boot 3 REST API starter for the WanderLust travel application. Uses Maven, Java 17, Spring Web, Spring Data JPA, MySQL Connector/J, Validation, Spring Security, and Lombok.
 
-## Folder guide
+## Domain model
 
-```text
-wanderlust-api/
-├── pom.xml
-├── README.md
-├── .gitignore
-└── src/
-    ├── main/
-    │   ├── java/com/wanderlust/api/
-    │   │   ├── WanderlustApiApplication.java
-    │   │   ├── config/       # Security and framework configuration
-    │   │   ├── controller/   # HTTP/REST endpoints
-    │   │   ├── service/      # Business rules and application logic
-    │   │   ├── repository/   # Spring Data database interfaces
-    │   │   ├── entity/       # JPA classes mapped to MySQL tables
-    │   │   ├── dto/          # Request/response objects
-    │   │   └── exception/    # Custom exceptions and global error handlers
-    │   └── resources/
-    │       └── application.properties
-    └── test/java/com/wanderlust/api/service/
-        └── HealthServiceTest.java
-```
+- `User`: a member who may host listings, book stays as a guest, and write reviews.
+- `Listing`: a property belonging to one host; it can have many bookings and reviews.
+- `Booking`: one guest's reservation for one listing, with dates, party size, status, and total price.
+- `Review`: a rating and optional comment authored by a user for a listing. A unique constraint currently allows one review per author per listing.
+- `AuditableEntity`: shared `createdAt` and `updatedAt` timestamps inherited by all four entities.
+- `BookingStatus`: enum persisted as text values: PENDING, CONFIRMED, CANCELLED, COMPLETED.
 
-## Prerequisites
-- JDK 17
-- Maven 3.6.3 or later
-- MySQL 8.x or compatible
+All associations are lazy-loaded. The `ManyToOne` associations own the foreign keys; `OneToMany(mappedBy = ...)` collections are the inverse side. Cascading deletes are intentionally not enabled.
 
-Create the database once:
+## MySQL schema
 
-```sql
-CREATE DATABASE wanderlust_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
+The matching schema is `src/main/resources/db/schema-mysql.sql`. Create the database first:
 
-Set DB_USERNAME and DB_PASSWORD in your IDE run configuration or shell to match your local MySQL account. The properties contain local-only fallback values; replace them and do not commit real credentials. Set API_USER and API_PASSWORD as well—the fallback Basic Auth password is only a placeholder.
+    CREATE DATABASE wanderlust_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+Then run the schema file against `wanderlust_db`, for example:
+
+    mysql -u root -p wanderlust_db < src/main/resources/db/schema-mysql.sql
+
+Set DB_USERNAME and DB_PASSWORD to your local MySQL credentials. Set API_USER and API_PASSWORD to non-default values too. Never store a raw password in the users table; passwordHash is intended for a secure hash.
 
 ## Run
 
-```bash
-mvn test
-mvn spring-boot:run
-```
+Requires JDK 17, Maven, and MySQL.
 
-The service listens on http://localhost:8080. Check it with:
+    mvn test
+    mvn spring-boot:run
 
-```bash
-curl http://localhost:8080/api/health
-```
-
-Expected response:
-
-```json
-{"status":"UP","application":"wanderlust-api"}
-```
-
-The health route is public. Other routes require HTTP Basic authentication until specific authorization rules are implemented.
+The public starter health endpoint is GET /api/health. Other endpoints require HTTP Basic authentication until explicit access rules are added.
 
 ## Notes
-- spring.jpa.hibernate.ddl-auto=update is for development. For production, use validate plus a migration tool.
-- spring.jpa.open-in-view=false avoids keeping persistence sessions open across request processing.
-- This is a scaffold with a health endpoint; travel-domain entities and CRUD endpoints are not implemented yet.
+
+- `spring.jpa.hibernate.ddl-auto=update` is a development convenience. If you create the schema manually, use `DDL_AUTO=validate` to let Hibernate validate it.
+- Check-in/check-out business rules, availability overlap detection, permission checks, and price calculations should also be enforced in the service layer.
+- Use DTOs for REST input/output rather than exposing JPA entities directly.
