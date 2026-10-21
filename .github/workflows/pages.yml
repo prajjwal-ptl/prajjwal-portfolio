@@ -55,8 +55,10 @@ jobs:
           mkdir -p .pages-site/macaly-3d-portfolio
           cp -a .nojekyll index.html about.html contact.html projects.html script.js site.json styles.css projects .pages-site/
           cp -a macaly-3d-portfolio/.output-pages/. .pages-site/macaly-3d-portfolio/
+          cp -a vikash-mandal-java-portfolio .pages-site/
           touch .pages-site/.nojekyll
           test -s .pages-site/index.html
+          test -s .pages-site/vikash-mandal-java-portfolio/index.html
           test -s .pages-site/macaly-3d-portfolio/index.html
           test -s .pages-site/macaly-3d-portfolio/favicon.svg
           test -s .pages-site/macaly-3d-portfolio/manifest.json
@@ -250,13 +252,15 @@ jobs:
         run: |
           set -euo pipefail
           base="https://prajjwal-ptl.github.io/prajjwal-portfolio"
-          for path in "/" "/portfolio.html" "/macaly-3d-portfolio/" "/macaly-3d-portfolio/prajjwal-portrait.webp"; do
+          for path in "/" "/portfolio.html" "/macaly-3d-portfolio/" "/macaly-3d-portfolio/prajjwal-portrait.webp" "/vikash-mandal-java-portfolio/"; do
             code="$(curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -sS -o /tmp/pages-check -w '%{http_code}' "$base$path")"
             echo "$base$path -> HTTP $code"
             test "$code" = "200"
           done
           curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -fsS "$base/" -o /tmp/portfolio.html
           grep -q '<title>Prajjwal Patel' /tmp/portfolio.html
+          curl --retry 5 --retry-delay 3 --retry-all-errors --max-time 15 -fsS "$base/vikash-mandal-java-portfolio/" -o /tmp/vikash-portfolio.html
+          grep -q '<title>Vikash Mandal — Java Developer</title>' /tmp/vikash-portfolio.html
           js_path="$(grep -oE 'src="[^"]+\.js"' /tmp/portfolio.html | head -1 | sed -E 's/^src="([^"]+)".*/\1/')"
           css_path="$(grep -oE 'href="[^"]+\.css"' /tmp/portfolio.html | head -1 | sed -E 's/^href="([^"]+)".*/\1/')"
           test -n "$js_path"
