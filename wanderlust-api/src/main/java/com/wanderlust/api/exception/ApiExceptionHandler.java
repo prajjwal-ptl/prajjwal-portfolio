@@ -5,6 +5,8 @@ import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
@@ -18,7 +20,6 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
-
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleNotFound(ResourceNotFoundException exception) {
         return response(HttpStatus.NOT_FOUND, exception.getMessage(), Map.of());
@@ -29,15 +30,22 @@ public class ApiExceptionHandler {
         return response(HttpStatus.CONFLICT, exception.getMessage(), Map.of());
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ApiErrorResponse> handleAccessDenied(AccessDeniedException exception) {
+        return response(HttpStatus.FORBIDDEN, exception.getMessage(), Map.of());
+    }
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<ApiErrorResponse> handleAuthentication(AuthenticationException exception) {
+        return response(HttpStatus.UNAUTHORIZED, "Invalid email/password or authentication credentials", Map.of());
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiErrorResponse> handleBadRequest(IllegalArgumentException exception) {
         return response(HttpStatus.BAD_REQUEST, exception.getMessage(), Map.of());
     }
 
-    @ExceptionHandler({
-            MethodArgumentNotValidException.class,
-            ConstraintViolationException.class
-    })
+    @ExceptionHandler({MethodArgumentNotValidException.class, ConstraintViolationException.class})
     public ResponseEntity<ApiErrorResponse> handleValidation(Exception exception) {
         if (exception instanceof MethodArgumentNotValidException validationException) {
             Map<String, String> fields = validationException.getBindingResult().getFieldErrors().stream()
@@ -58,16 +66,9 @@ public class ApiExceptionHandler {
         return response(HttpStatus.BAD_REQUEST, "Request validation failed", fields);
     }
 
-    @ExceptionHandler({
-            HttpMessageNotReadableException.class,
-            MethodArgumentTypeMismatchException.class
-    })
+    @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
     public ResponseEntity<ApiErrorResponse> handleUnreadableRequest(Exception exception) {
-        return response(
-                HttpStatus.BAD_REQUEST,
-                "Request contains an invalid value or malformed JSON",
-                Map.of()
-        );
+        return response(HttpStatus.BAD_REQUEST, "Request contains an invalid value or malformed JSON", Map.of());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
@@ -77,25 +78,17 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ApiErrorResponse> handleDataConflict(DataIntegrityViolationException exception) {
-        return response(
-                HttpStatus.CONFLICT,
-                "The operation conflicts with existing data. Check related bookings and database constraints.",
-                Map.of()
-        );
+        return response(HttpStatus.CONFLICT,
+                "The operation conflicts with existing data. Check related bookings and database constraints.", Map.of());
     }
 
-    private ResponseEntity<ApiErrorResponse> response(
-            HttpStatus status,
-            String message,
-            Map<String, String> fieldErrors
-    ) {
-        ApiErrorResponse body = new ApiErrorResponse(
-                Instant.now(),
-                status.value(),
-                status.getReasonPhrase(),
-                message,
-                fieldErrors
-        );
-        return ResponseEntity.status(status).body(body);
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiErrorResponse> handleUnexpected(Exception exception) {
+        return response(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected server error occurred", Map.of());
+    }
+
+    private ResponseEntity<ApiErrorResponse> response(HttpStatus status, String message, Map<String, String> fieldErrors) {
+        return ResponseEntity.status(status).body(new ApiErrorResponse(
+                Instant.now(), status.value(), status.getReasonPhrase(), message, fieldErrors));
     }
 }

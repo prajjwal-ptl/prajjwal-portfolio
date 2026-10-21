@@ -13,27 +13,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(MockitoExtension.class)
 class BookingServiceTest {
-
-    @Mock
-    private BookingRepository bookingRepository;
-
-    @Mock
-    private UserRepository userRepository;
-
-    @Mock
-    private ListingRepository listingRepository;
+    @Mock private BookingRepository bookingRepository;
+    @Mock private UserRepository userRepository;
+    @Mock private ListingRepository listingRepository;
 
     @InjectMocks
     private BookingService bookingService;
 
     @Test
-    void rejectsNegativePage() {
+    void rejectsNegativePageBeforeDatabaseAccess() {
         assertThrows(IllegalArgumentException.class,
                 () -> bookingService.searchBookings(-1, 20, "createdAt", "desc", null, null, null));
     }
 
     @Test
-    void rejectsUnsupportedSortFields() {
+    void rejectsUnsupportedSortFieldsBeforeAuthenticationLookup() {
         assertThrows(IllegalArgumentException.class,
                 () -> bookingService.searchBookings(0, 20, "guest.passwordHash", "asc", null, null, null));
     }

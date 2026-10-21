@@ -1,16 +1,79 @@
 # wanderlust-api
 
-Spring Boot 3 REST API starter for the WanderLust travel application. Uses Maven, Java 17, Spring Web, Spring Data JPA, MySQL Connector/J, Validation, Spring Security, and Lombok.
+Spring Boot 3 REST API starter for WanderLust, using Maven, Java 17, Spring Web, Spring Data JPA, MySQL, Validation, Spring Security, BCrypt, and JWT (JJWT).
+
+## Authentication
+
+Generate a Base64 signing secret locally; don't commit the value:
+
+```bash
+openssl rand -base64 32
+```
+
+Export it as `JWT_SECRET` before launching the application. Optionally set `JWT_EXPIRATION_MS` (default 3,600,000 ms / 1 hour).
+
+### Register
+
+```http
+POST /api/auth/register
+Content-Type: application/json
+```
+
+```json
+{
+  "name": "Alex Host",
+  "email": "alex@example.com",
+  "password": "a-long-demo-password",
+  "role": "HOST"
+}
+```
+
+Supported roles are `USER` and `HOST`; if role is omitted, it defaults to `USER`. The response contains a signed access token and basic account details. Host registration is open in this learning starter; a deployed marketplace should gate HOST role assignment behind an approval/onboarding workflow.
+
+### Login
+
+```http
+POST /api/auth/login
+Content-Type: application/json
+```
+
+```json
+{
+  "email": "alex@example.com",
+  "password": "a-long-demo-password"
+}
+```
+
+Use the returned token on protected routes:
+
+```http
+Authorization: Bearer <accessToken>
+```
+
+Passwords are encoded with BCrypt before persistence. Raw passwords are never stored. Tokens are stateless, signed and expire; the user/role data is reloaded from the database when a token is used.
+
+## Spring Security filter chain — interview walkthrough
+
+1. **Request enters the servlet filter chain.** Spring Security applies the configured `SecurityFilterChain` to the request.
+2. **JWT filter runs before username/password authentication.** `JwtAuthenticationFilter` reads the `Authorization: Bearer ...` header. If there's no bearer token, it continues anonymously.
+3. **Token is verified, not merely decoded.** `JwtService` checks the signature using the server-side secret and checks expiry; a modified or expired token is not accepted.
+4. **User details and authorities are loaded.** The token subject is the account email. `CustomUserDetailsService` loads the current account and builds `ROLE_USER` or `ROLE_HOST` authorities from the database.
+5. **SecurityContext is populated.** On success, the filter creates an authenticated `UsernamePasswordAuthenticationToken` and stores it in `SecurityContextHolder` for this request.
+6. **Authorization rules run.** Public GET listing routes and auth routes are permitted. Listing write routes require `ROLE_HOST`; booking routes require `ROLE_USER` or `ROLE_HOST`.
+7. **Service-level ownership is checked.** A HOST role is not enough to alter any listing. `ListingService` fetches the authenticated account and compares its id with `listing.host.id` for update/delete.
+8. **Success or consistent error response.** Controllers return appropriate status codes; `ApiExceptionHandler` formats application errors, while the configured security entry point and access-denied handler return JSON for 401/403 from the security layer.
+
+**Interview distinction:** authentication answers “who are you?”; authorization answers “what may you do?” Role checks permit the host category, and the service's owner check restricts a host to their own listing.
 
 ## Listing API
 
-| Method | Path | Success status | Purpose |
+| Method | Path | Status | Purpose |
 |---|---|---:|---|
-| GET | `/api/listings` | 200 | Search with pagination, sorting, location and price filters |
-| GET | `/api/listings/{id}` | 200 | Get one listing |
-| POST | `/api/listings` | 201 | Create a listing; includes a Location header |
-| PUT | `/api/listings/{id}` | 200 | Replace editable listing fields |
-| DELETE | `/api/listings/{id}` | 204 | Delete when database constraints permit |
+| GET | `/api/listings` | 200 | Search/filter/paginate/sort; public |
+| GET | `/api/listings/{id}` | 200 | Retrieve one listing; public |
+| POST | `/api/listings` | 201 | Create as authenticated HOST; server assigns the host |
+| PUT | `/api/listings/{id}` | 200 | Update your own listing as HOST |
+| DELETE | `/api/listings/{id}` | 204 | Delete your own listing if database constraints allow |
 
 Search example:
 
@@ -18,32 +81,22 @@ Search example:
 GET /api/listings?page=0&size=20&sortBy=nightlyPrice&direction=asc&location=Delhi&minPrice=1000&maxPrice=5000
 ```
 
-Allowed Listing sort fields: `id`, `title`, `city`, `country`, `nightlyPrice`, `createdAt`, `updatedAt`.
+Allowed sort fields: `id`, `title`, `city`, `country`, `nightlyPrice`, `createdAt`, `updatedAt`.
 
 ## Booking API
 
-| Method | Path | Success status | Purpose |
+| Method | Path | Status | Purpose |
 |---|---|---:|---|
-| GET | `/api/bookings` | 200 | Paginated list, optionally filtered by guest, listing or status |
-| GET | `/api/bookings/{id}` | 200 | Get one booking |
-| POST | `/api/bookings` | 201 | Create a pending booking; includes a Location header |
-| PUT | `/api/bookings/{id}` | 200 | Change dates/guest count while booking is pending |
-| PATCH | `/api/bookings/{id}/cancel` | 200 | Cancel a pending or confirmed booking |
-| DELETE | `/api/bookings/{id}` | 204 | Permanently remove a pending or cancelled booking |
+| GET | `/api/bookings` | 200 | Paginated bookings for the signed-in guest |
+| GET | `/api/bookings/{id}` | 200 | Retrieve your booking |
+| POST | `/api/bookings` | 201 | Create a pending booking; sends `listingId`, `checkIn`, `checkOut`, `guests` |
+| PUT | `/api/bookings/{id}` | 200 | Update your pending booking |
+| PATCH | `/api/bookings/{id}/cancel` | 200 | Cancel your booking |
+| DELETE | `/api/bookings/{id}` | 204 | Delete your pending/cancelled booking |
 
-Booking search example:
+The guest id is derived from the JWT; a caller cannot impersonate another guest by passing a different id. Booking overlap checks cover existing PENDING/CONFIRMED bookings; high-concurrency production booking should also use locking or a dedicated reservation strategy.
 
-```http
-GET /api/bookings?page=0&size=20&sortBy=checkIn&direction=asc&guestId=4&status=CONFIRMED
-```
-
-Allowed Booking sort fields: `id`, `checkIn`, `checkOut`, `guests`, `status`, `totalPrice`, `createdAt`, `updatedAt`.
-
-Creating a booking takes `guestId`, `listingId`, `checkIn`, `checkOut`, and `guests`. The service looks up the guest and listing, checks the guest limit, checks date overlap against pending/confirmed reservations, and calculates the total using the listing's nightly price. Only pending bookings can be edited; confirmed/completed bookings retain their history.
-
-## Consistent errors
-
-The global `@RestControllerAdvice` returns a JSON error body in this shape:
+## Consistent error JSON
 
 ```json
 {
@@ -57,52 +110,33 @@ The global `@RestControllerAdvice` returns a JSON error body in this shape:
 }
 ```
 
-The handler maps validation and malformed input to 400, missing resources to 404, conflicting state/database constraints to 409, and unsupported HTTP methods to 405.
+Typical error statuses: 400 invalid input; 401 missing/invalid authentication; 403 insufficient role or resource ownership; 404 resource missing; 409 overlapping booking or database constraint conflict; 405 unsupported HTTP method; 500 unexpected server error.
 
-## Architecture
-
-Controllers handle HTTP bindings and response status codes only. DTOs validate input and shape output. Services own business rules, transactional boundaries, mapping and search validation. Repositories persist and query entities.
-
-**Authorization follow-up:** the starter currently uses HTTP Basic authentication, but that authentication is not yet linked to the application's `User` entity. Before production, derive guest/host identity from the authenticated principal and enforce ownership checks instead of trusting caller-supplied user IDs.
-
-## Domain model
-
-- `User`: a member who may host listings, book stays as a guest, and write reviews.
-- `Listing`: a property belonging to one host; it can have many bookings and reviews.
-- `Booking`: one guest's reservation for one listing, with dates, party size, status, and total price.
-- `Review`: a rating and optional comment authored by a user for a listing. A unique constraint currently allows one review per author per listing.
-- `AuditableEntity`: shared `createdAt` and `updatedAt` timestamps inherited by all four entities.
-- `BookingStatus`: enum persisted as text values: PENDING, CONFIRMED, CANCELLED, COMPLETED.
-
-## MySQL schema
-
-The matching schema is `src/main/resources/db/schema-mysql.sql`. Create the database first:
+## MySQL setup
 
 ```sql
 CREATE DATABASE wanderlust_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
-Then run the schema file against `wanderlust_db`:
+Run the schema:
 
 ```bash
 mysql -u root -p wanderlust_db < src/main/resources/db/schema-mysql.sql
 ```
 
-Set `DB_USERNAME` and `DB_PASSWORD` to your local MySQL credentials. Set `API_USER` and `API_PASSWORD` to non-default values too. Never store a raw password in the users table; `passwordHash` is intended for a secure hash.
+Ensure `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` and `JWT_SECRET` are set. Use `DDL_AUTO=validate` for production after applying schema migrations; `update` is a local development convenience.
 
 ## Run
-
-Requires JDK 17, Maven, and MySQL.
 
 ```bash
 mvn test
 mvn spring-boot:run
 ```
 
-The public starter health endpoint is GET `/api/health`; listing and booking endpoints require HTTP Basic authentication.
+## Security production checklist
 
-## Notes
-
-- `spring.jpa.hibernate.ddl-auto=update` is a development convenience. If you create the schema manually, use `DDL_AUTO=validate` to let Hibernate validate it.
-- Confirmed bookings cannot be deleted directly; cancel them first. A completed booking cannot be cancelled.
-- The current overlap check prevents conflicts across concurrent existing PENDING/CONFIRMED bookings but relies on the database/service transaction strategy; high-concurrency booking systems should also use a locking or equivalent reservation strategy.
+- Put host-role assignment behind host verification, rather than open registration.
+- Keep the JWT secret out of source control and use a secret manager.
+- Configure TLS, rate limiting on auth routes, password reset, token revocation/rotation, and audit logs as needed.
+- For browser sessions/cookies, revisit CSRF strategy instead of blindly disabling CSRF.
+- Consider rate limits and a locking strategy for booking overlap under concurrent requests.

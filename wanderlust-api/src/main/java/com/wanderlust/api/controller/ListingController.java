@@ -23,7 +23,6 @@ import java.math.BigDecimal;
 @RestController
 @RequestMapping("/api/listings")
 public class ListingController {
-
     private final ListingService listingService;
 
     public ListingController(ListingService listingService) {
@@ -40,9 +39,8 @@ public class ListingController {
             @RequestParam(required = false) BigDecimal minPrice,
             @RequestParam(required = false) BigDecimal maxPrice
     ) {
-        return ResponseEntity.ok(listingService.searchListings(
-                page, size, sortBy, direction, location, minPrice, maxPrice
-        ));
+        return ResponseEntity.ok(listingService.searchListings(page, size, sortBy, direction,
+                location, minPrice, maxPrice));
     }
 
     @GetMapping("/{id}")
@@ -56,9 +54,8 @@ public class ListingController {
             UriComponentsBuilder uriBuilder
     ) {
         ListingResponse created = listingService.createListing(request);
-        return ResponseEntity
-                .created(uriBuilder.path("/api/listings/{id}").buildAndExpand(created.id()).toUri())
-                .body(created);
+        return ResponseEntity.created(uriBuilder.path("/api/listings/{id}")
+                .buildAndExpand(created.id()).toUri()).body(created);
     }
 
     @PutMapping("/{id}")

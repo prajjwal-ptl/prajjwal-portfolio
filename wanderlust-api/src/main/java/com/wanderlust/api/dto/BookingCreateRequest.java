@@ -7,8 +7,8 @@ import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 
+/** Guest identity is always taken from the signed-in principal, never from the JSON body. */
 public record BookingCreateRequest(
-        @NotNull @Positive Long guestId,
         @NotNull @Positive Long listingId,
         @NotNull LocalDate checkIn,
         @NotNull LocalDate checkOut,
