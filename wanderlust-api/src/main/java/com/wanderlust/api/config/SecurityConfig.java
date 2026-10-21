@@ -20,7 +20,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import java.io.IOException;
 import java.time.Instant;
 import java.util.Map;
@@ -33,10 +32,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(
-            CustomUserDetailsService userDetailsService,
-            PasswordEncoder passwordEncoder
-    ) {
+    public AuthenticationProvider authenticationProvider(CustomUserDetailsService userDetailsService,
+                                                          PasswordEncoder passwordEncoder) {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
         provider.setPasswordEncoder(passwordEncoder);
         return provider;
@@ -48,13 +45,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http,
-            CustomUserDetailsService userDetailsService,
-            JwtService jwtService,
-            AuthenticationProvider authenticationProvider,
-            ObjectMapper objectMapper
-    ) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,
+            CustomUserDetailsService userDetailsService, JwtService jwtService,
+            AuthenticationProvider authenticationProvider, ObjectMapper objectMapper) throws Exception {
         JwtAuthenticationFilter jwtFilter = new JwtAuthenticationFilter(jwtService, userDetailsService);
         return http
                 .csrf(AbstractHttpConfigurer::disable)
@@ -68,7 +61,8 @@ public class SecurityConfig {
                                 writeError(objectMapper, response, 403, "Forbidden",
                                         "You do not have permission to perform this action")))
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/api/auth/**", "/api/health", "/error").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/health", "/error", "/swagger-ui.html",
+                                "/swagger-ui/**", "/v3/api-docs/**", "/v3/api-docs.yaml").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/listings", "/api/listings/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/listings", "/api/listings/**").hasRole("HOST")
                         .requestMatchers(HttpMethod.PUT, "/api/listings", "/api/listings/**").hasRole("HOST")

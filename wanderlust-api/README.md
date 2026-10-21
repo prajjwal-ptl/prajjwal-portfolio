@@ -133,6 +133,35 @@ mvn test
 mvn spring-boot:run
 ```
 
+
+## Swagger / OpenAPI
+
+This project uses `springdoc-openapi-starter-webmvc-ui` 2.9.1 for Spring Boot 3.x. The interactive API docs are available at:
+
+- Swagger UI: `http://localhost:8080/swagger-ui.html`
+- OpenAPI JSON: `http://localhost:8080/v3/api-docs`
+- OpenAPI YAML: `http://localhost:8080/v3/api-docs.yaml`
+
+The `OpenApiConfig` class documents the API and registers the HTTP Bearer JWT scheme. In Swagger UI, click **Authorize** and paste the token returned by login, without adding the literal word `Bearer`. Spring Security explicitly permits the documentation endpoints.
+
+## Run with Docker Compose
+
+Prerequisites: Docker Engine and the Docker Compose plugin.
+
+1. Copy `.env.example` to `.env` from this directory.
+2. Replace each example password. Set `JWT_SECRET` to the output of `openssl rand -base64 32`. Do not commit `.env`.
+3. Build and start the app and database:
+
+```bash
+docker compose up --build
+```
+
+Compose waits for MySQL's health check before starting the API. The API is exposed at `http://localhost:8080`, Swagger UI at `http://localhost:8080/swagger-ui.html`, and MySQL at `localhost:3307` for local development. Data persists in the named `mysql_data` volume.
+
+Stop containers with `docker compose down`. To remove the database volume as well (this deletes local database data), use `docker compose down -v`. Rebuild after code changes with `docker compose up --build`.
+
+The Dockerfile builds with Maven/JDK 17 and runs the packaged JAR from a smaller JRE image as a non-root user. The container Compose network makes the database available to the application as host `mysql`; don't use `localhost` inside the app container.
+
 ## Security production checklist
 
 - Put host-role assignment behind host verification, rather than open registration.

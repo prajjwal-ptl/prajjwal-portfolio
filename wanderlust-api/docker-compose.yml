@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wanderlust-api:local
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:8080"
+    environment:
+      PORT: "8080"
+      DB_URL: "jdbc:mysql://mysql:3306/${MYSQL_DATABASE:-wanderlust_db}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+      DB_USERNAME: "${MYSQL_USER:-wanderlust}"
+      DB_PASSWORD: "${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in the .env file}"
+      DDL_AUTO: "${DDL_AUTO:-update}"
+      JWT_SECRET: "${JWT_SECRET:?Set JWT_SECRET in the .env file}"
+      JWT_EXPIRATION_MS: "${JWT_EXPIRATION_MS:-3600000}"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - wanderlust-net
+
+  mysql:
+    image: mysql:8.4
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-wanderlust_db}"
+      MYSQL_USER: "${MYSQL_USER:-wanderlust}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in the .env file}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in the .env file}"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # Optional host access for local SQL tools; defaults to localhost:3307.
+    ports:
+      - "${MYSQL_PORT:-3307}:3306"
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u\"$${MYSQL_USER}\" -p\"$${MYSQL_PASSWORD}\" --silent"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    networks:
+      - wanderlust-net
+
+volumes:
+  mysql_data:
+
+networks:
+  wanderlust-net:
+    driver: bridge
